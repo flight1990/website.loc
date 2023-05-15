@@ -1,6 +1,6 @@
 import './bootstrap';
 
-import { createApp, h } from 'vue';
+import { createSSRApp, h } from 'vue';
 import { createInertiaApp, Link, Head, router } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import NProgress from 'nprogress';
@@ -21,7 +21,7 @@ createInertiaApp({
         }
     },
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
+        createSSRApp({ render: () => h(App, props) })
             .use(plugin)
             .component('inertia-link', Link)
             .component('inertia-head', Head)

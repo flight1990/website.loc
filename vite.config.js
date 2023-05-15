@@ -11,4 +11,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            '@': '/resources/js',
+        },
+    },
+    ssr: {
+        noExternal: ['@inertiajs/server', 'lodash'],
+    },
 });
