@@ -13,8 +13,6 @@
                 <th>Название</th>
                 <th>Slug</th>
                 <th>Статус</th>
-                <th>Создана</th>
-                <th>Обновлена</th>
                 <th>Операции</th>
             </tr>
             </thead>
@@ -43,9 +41,7 @@ export default {
                     {data: 'title', name: 'title'},
                     {data: 'slug', name: 'slug'},
                     {data: 'is_active', name: 'is_active'},
-                    {data: 'created_at', name: 'created_at'},
-                    {data: 'updated_at', name: 'updated_at'},
-                    {data: 'actions', name: 'actions', orderable: false},
+                    {data: 'actions', name: 'actions', orderable: false, searchable: false},
                 ],
                 fnDrawCallback: function () {
                     replaceHtmlLinksToInertiaLinks('#table');

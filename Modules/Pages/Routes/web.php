@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Pages\Http\Controllers\Admin\PagesController as AdminPagesController;
-use Modules\Pages\Http\Controllers\PagesController as GuestPagesController;
+use Modules\Pages\Http\Controllers\Guest\PagesController as GuestPagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

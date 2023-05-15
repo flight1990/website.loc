@@ -7,21 +7,23 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
 use Inertia\Response;
-use Modules\Roles\Actions\AdminGetAllRolesForUser;
-use Modules\Users\Actions\AdminCreateUserAction;
-use Modules\Users\Actions\AdminDeleteUserAction;
-use Modules\Users\Actions\AdminFindUserByIDAction;
-use Modules\Users\Actions\AdminGetAllUsersAction;
-use Modules\Users\Actions\AdminUpdateUserAction;
 use Modules\Users\Http\Requests\CreateUserRequest;
 use Modules\Users\Http\Requests\UpdateUserRequest;
+use Modules\Users\Repositories\UserRepository;
 
 class UsersController extends Controller
 {
+    protected UserRepository $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function index(Request $request)
     {
         if ($request->ajax() && !$request->inertia()) {
-            return app(AdminGetAllUsersAction::class)->run();
+            return $this->userRepository->getAll(['id', 'name', 'email']);
         }
 
         return Inertia::render('Users::UsersIndex');
@@ -34,25 +36,31 @@ class UsersController extends Controller
 
     public function store(CreateUserRequest $request): RedirectResponse
     {
-        app(AdminCreateUserAction::class)->run($request->validated());
+        $this->userRepository->create($request->validated());
+
         return redirect()->route('admin.users.index');
     }
 
     public function edit($id): Response
     {
-        $user = app(AdminFindUserByIDAction::class)->run($id);
-        return Inertia::render('Users::UsersModify', compact('user'));
+        $user = $this->userRepository->findByID($id);
+
+        return Inertia::render('Users::UsersModify', [
+            'user' => $user
+        ]);
     }
 
     public function update(UpdateUserRequest $request, $id): RedirectResponse
     {
-        app(AdminUpdateUserAction::class)->run($request->validated(), $id);
+        $this->userRepository->update($request->validated(), $id);
+
         return redirect()->route('admin.users.index');
     }
 
     public function destroy($id): RedirectResponse
     {
-        app(AdminDeleteUserAction::class)->run($id);
+        $this->userRepository->delete($id);
+
         return redirect()->route('admin.users.index');
     }
 }

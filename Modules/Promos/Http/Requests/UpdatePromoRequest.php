@@ -11,7 +11,7 @@ class UpdatePromoRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:191'],
             'url' => ['nullable', 'string', 'max:191'],
-            'img' => ['nullable', 'image', 'mimes:jpg'],
+            'file' => ['nullable', 'image', 'mimes:jpg'],
             'content' => ['nullable', 'string'],
             'is_active' => ['nullable', 'boolean']
         ];

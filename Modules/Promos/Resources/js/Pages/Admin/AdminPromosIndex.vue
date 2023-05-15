@@ -14,8 +14,6 @@
                 <th>Cсылка</th>
                 <th>Изображение</th>
                 <th>Статус</th>
-                <th>Создана</th>
-                <th>Обновлена</th>
                 <th>Операции</th>
             </tr>
             </thead>
@@ -43,11 +41,9 @@ export default {
                     {data: 'id', name: 'id'},
                     {data: 'title', name: 'title'},
                     {data: 'url', name: 'url'},
-                    {data: 'img', name: 'img', orderable: false},
+                    {data: 'img', name: 'img', orderable: false, searchable: false},
                     {data: 'is_active', name: 'is_active'},
-                    {data: 'created_at', name: 'created_at'},
-                    {data: 'updated_at', name: 'updated_at'},
-                    {data: 'actions', name: 'actions', orderable: false},
+                    {data: 'actions', name: 'actions', orderable: false, searchable: false},
                 ],
                 fnDrawCallback: function () {
                     replaceHtmlLinksToInertiaLinks('#table');

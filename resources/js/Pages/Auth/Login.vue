@@ -16,8 +16,6 @@
 
         <button :disabled="form.processing" @click.prevent="login">Вход</button>
 
-        <inertia-link href="/register">Регистрация</inertia-link>
-
     </form>
 
 </template>

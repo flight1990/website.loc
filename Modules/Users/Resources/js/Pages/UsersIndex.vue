@@ -12,8 +12,6 @@
                 <th>ID</th>
                 <th>ФИО</th>
                 <th>Email</th>
-                <th>Создан</th>
-                <th>Обновлен</th>
                 <th>Операции</th>
             </tr>
             </thead>
@@ -40,9 +38,7 @@ export default {
                 {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
                 {data: 'email', name: 'email'},
-                {data: 'created_at', name: 'created_at'},
-                {data: 'updated_at', name: 'updated_at'},
-                {data: 'actions', name: 'actions', orderable: false},
+                {data: 'actions', name: 'actions', orderable: false, searchable: false},
             ],
             fnDrawCallback: function () {
                 replaceHtmlLinksToInertiaLinks('#table');

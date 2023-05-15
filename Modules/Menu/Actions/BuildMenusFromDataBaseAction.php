@@ -2,16 +2,18 @@
 
 namespace Modules\Menu\Actions;
 
-class BuildMenusFromDataBaseAction extends BaseAction
+use Modules\Menu\Repositories\MenuRepository;
+
+class BuildMenusFromDataBaseAction
 {
+    public function __construct(MenuRepository $menuRepository)
+    {
+        $this->menuRepository = $menuRepository;
+    }
+
     public function run($menu)
     {
-        $node = $this->model->query()
-            ->select(['id', 'title', 'url', 'parent_id', '_lft', '_rgt', 'sort'])
-            ->where('is_active', 1)
-            ->get()
-            ->sortBy('sort')
-            ->toTree();
+        $node = $this->menuRepository->getNodeTreeMenus(['id', 'title', 'url', 'parent_id', '_lft', '_rgt', 'sort']);
 
         $menuBuilder = function ($menus, $parent = null) use (&$menuBuilder, &$menu) {
 
