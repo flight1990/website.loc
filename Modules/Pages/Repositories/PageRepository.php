@@ -1,21 +1,22 @@
 <?php
 
-namespace Modules\Pages\Actions;
-use DataTables;
-class AdminGetAllPagesAction extends BaseAction
-{
-    public function run()
-    {
-        $query = $this->model->query()
-            ->select(['id', 'title', 'slug', 'is_active', 'created_at', 'updated_at']);
+namespace Modules\Pages\Repositories;
 
-        return DataTables::eloquent($query)
-            ->editColumn('is_active', function ($item) {
-                return $item->is_active ? 'Активна' : 'Не активна';
-            })
-            ->editColumn('created_at', function ($item) {
-                return $item->created_at?->format('d.m.Y h:s');
-            })
+use DataTables;
+use App\Repositories\BaseRepository;
+use Modules\Pages\Models\Page;
+
+class PageRepository extends BaseRepository
+{
+    public function __construct(Page $model)
+    {
+        parent::__construct($model);
+    }
+
+    public function getAll(array $columns = ['*'])
+    {
+        return DataTables::eloquent($this->model->query()
+            ->select($columns))
             ->editColumn('updated_at', function ($item) {
                 return $item->updated_at?->format('d.m.Y h:s');
             })
@@ -29,5 +30,15 @@ class AdminGetAllPagesAction extends BaseAction
             })
             ->rawColumns(['actions'])
             ->toJson();
+    }
+
+    public function findOnlyActiveBySlug($slug, $columns = ['*'])
+    {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->whereSlug($slug)
+            ->whereIsActive(1)
+            ->firstOrFail();
     }
 }

@@ -1,16 +1,22 @@
 <?php
 
-namespace Modules\Users\Actions;
+namespace Modules\Users\Repositories;
+
 use DataTables;
+use App\Repositories\BaseRepository;
+use Modules\Users\Models\User;
 
-class AdminGetAllUsersAction extends BaseAction
+class UserRepository extends BaseRepository
 {
-    public function run()
+    public function __construct(User $model)
     {
-        $query = $this->model->query()
-            ->select(['id', 'name', 'email', 'created_at', 'updated_at']);
+        parent::__construct($model);
+    }
 
-        return DataTables::eloquent($query)
+    public function getAll(array $columns = ['*'])
+    {
+        return DataTables::eloquent($this->model->query()
+            ->select($columns))
             ->editColumn('created_at', function ($item) {
                 return $item->created_at?->format('d.m.Y h:s');
             })
@@ -26,5 +32,16 @@ class AdminGetAllUsersAction extends BaseAction
             })
             ->rawColumns(['actions'])
             ->toJson();
+    }
+
+    public function update($payload, $id): bool|int
+    {
+        if (!empty($payload['password'])) {
+            $payload['password'] = bcrypt($payload['password']);
+        } else {
+            unset($payload['password']);
+        }
+
+        return parent::update($payload, $id);
     }
 }

@@ -7,20 +7,23 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
 use Inertia\Response;
-use Modules\Pages\Actions\AdminCreatePageAction;
-use Modules\Pages\Actions\AdminDeletePageAction;
-use Modules\Pages\Actions\AdminFindPageByIDAction;
-use Modules\Pages\Actions\AdminGetAllPagesAction;
-use Modules\Pages\Actions\AdminUpdatePageAction;
 use Modules\Pages\Http\Requests\CreatePageRequest;
 use Modules\Pages\Http\Requests\UpdatePageRequest;
+use Modules\Pages\Repositories\PageRepository;
 
 class PagesController extends Controller
 {
+    protected PageRepository $pageRepository;
+
+    public function __construct(PageRepository $pageRepository)
+    {
+        $this->pageRepository = $pageRepository;
+    }
+
     public function index(Request $request)
     {
         if ($request->ajax() && !$request->inertia()) {
-            return app(AdminGetAllPagesAction::class)->run();
+            return $this->pageRepository->getAll(['id', 'title', 'slug', 'is_active']);
         }
 
         return Inertia::render('Pages::Admin/AdminPagesIndex');
@@ -33,31 +36,40 @@ class PagesController extends Controller
 
     public function store(CreatePageRequest $request): RedirectResponse
     {
-        app(AdminCreatePageAction::class)->run($request->validated());
+        $this->pageRepository->create($request->validated());
+
         return redirect()->route('admin.pages.index');
     }
 
     public function show($id): Response
     {
-        $page = app(AdminFindPageByIDAction::class)->run($id);
-        return Inertia::render('Pages::Admin/AdminPagesShow', compact('page'));
+        $page = $this->pageRepository->findByID($id);
+
+        return Inertia::render('Pages::Admin/AdminPagesShow', [
+            'page' => $page
+        ]);
     }
 
     public function edit($id): Response
     {
-        $page = app(AdminFindPageByIDAction::class)->run($id);
-        return Inertia::render('Pages::Admin/AdminPagesModify', compact('page'));
+        $page = $this->pageRepository->findByID($id);
+
+        return Inertia::render('Pages::Admin/AdminPagesModify', [
+            'page' => $page
+        ]);
     }
 
     public function update(UpdatePageRequest $request, $id): RedirectResponse
     {
-        app(AdminUpdatePageAction::class)->run($request->validated(), $id);
+        $this->pageRepository->update($request->validated(), $id);
+
         return redirect()->route('admin.pages.index');
     }
 
     public function destroy($id): RedirectResponse
     {
-        app(AdminDeletePageAction::class)->run($id);
+        $this->pageRepository->delete($id);
+
         return redirect()->route('admin.pages.index');
     }
 }

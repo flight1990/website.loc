@@ -2,67 +2,79 @@
 
 namespace Modules\Menu\Http\Controllers;
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
 use Inertia\Response;
-use Modules\Menu\Actions\AdminCreateMenuAction;
-use Modules\Menu\Actions\AdminDeleteMenuAction;
-use Modules\Menu\Actions\AdminFindMenuByIDAction;
-use Modules\Menu\Actions\AdminGetNodeTreeMenusAction;
-use Modules\Menu\Actions\AdminGetRootMenusForComboboxAction;
-use Modules\Menu\Actions\AdminRebuildMenusAction;
-use Modules\Menu\Actions\AdminUpdateMenuAction;
 use Modules\Menu\Http\Requests\CreateMenuRequest;
 use Modules\Menu\Http\Requests\UpdateMenuRequest;
+use Modules\Menu\Repositories\MenuRepository;
 
 class MenusController extends Controller
 {
+
+    protected MenuRepository $menuRepository;
+
+    public function __construct(MenuRepository $menuRepository)
+    {
+        $this->menuRepository = $menuRepository;
+    }
+
     public function index(): Response
     {
-        $menus = app(AdminGetNodeTreeMenusAction::class)->run();
-        return Inertia::render('Menu::MenuIndex', compact('menus'));
+        $menus = $this->menuRepository->getNodeTreeMenus(['id', 'title', 'url', 'sort', 'is_active', 'parent_id', '_lft', '_rgt']);
+
+        return Inertia::render('Menu::MenuIndex', [
+            'menus' => $menus
+        ]);
     }
 
     public function create(): Response
     {
-        $parents = app(AdminGetRootMenusForComboboxAction::class)->run();
+        $parents = $this->menuRepository->getRootMenusForCombobox();
 
-        return Inertia::render('Menu::MenuModify', compact('parents'));
+        return Inertia::render('Menu::MenuModify', [
+            'parents' => $parents
+        ]);
     }
 
     public function store(CreateMenuRequest $request): RedirectResponse
     {
-        app(AdminCreateMenuAction::class)->run($request->validated());
+        $this->menuRepository->create($request->validated());
+
         return redirect()->route('admin.menus.index');
     }
 
     public function edit($id): Response
     {
-        $menuItem = app(AdminFindMenuByIDAction::class)->run($id);
-        $parents = app(AdminGetRootMenusForComboboxAction::class)->run($id);
+        $menuItem = $this->menuRepository->findByID($id);
+        $parents = $this->menuRepository->getRootMenusForCombobox($id);
 
-        return Inertia::render('Menu::MenuModify', compact('menuItem', 'parents'));
+        return Inertia::render('Menu::MenuModify', [
+            'menuItem' => $menuItem,
+            'parents' => $parents
+        ]);
     }
 
     public function update(UpdateMenuRequest $request, $id): RedirectResponse
     {
-        app(AdminUpdateMenuAction::class)->run($request->validated(), $id);
+        $this->menuRepository->update($request->validated(), $id);
+
         return redirect()->route('admin.menus.index');
     }
 
     public function destroy($id): RedirectResponse
     {
-        app(AdminDeleteMenuAction::class)->run($id);
+        $this->menuRepository->delete($id);
+
         return redirect()->route('admin.menus.index');
     }
 
-    public function rebuild(Request $request): \Illuminate\Http\Response|Application|ResponseFactory
+    public function rebuild(Request $request)
     {
-        app(AdminRebuildMenusAction::class)->run($request->menu);
+        $this->menuRepository->rebuildTree($request->menu);
+
         return response('Дерево перестроено.');
     }
 }

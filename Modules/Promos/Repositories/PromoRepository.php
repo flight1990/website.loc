@@ -1,26 +1,35 @@
 <?php
 
-namespace Modules\Promos\Actions;
-use DataTables;
-class AdminGetAllPromosAction extends BaseAction
-{
-    public function run()
-    {
-        $query = $this->model->query()
-            ->select(['id', 'title', 'url', 'img', 'content', 'is_active', 'created_at', 'updated_at']);
+namespace Modules\Promos\Repositories;
 
-        return DataTables::eloquent($query)
+use DataTables;
+use App\Repositories\BaseRepository;
+use Modules\Promos\Models\Promo;
+
+class PromoRepository extends BaseRepository
+{
+    public function __construct(Promo $model)
+    {
+        parent::__construct($model);
+    }
+
+    public function getAllOnlyActive(array $columns = ['*'])
+    {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->whereIsActive(1)
+            ->get();
+    }
+
+    public function getAll(array $columns = ['*'])
+    {
+        return DataTables::eloquent($this->model->query()->select($columns))
             ->editColumn('img', function ($item) {
                 return "<img src='{$item->img}'  alt='{$item->title}' width='200'>";
             })
             ->editColumn('is_active', function ($item) {
                 return $item->is_active ? 'Активна' : 'Не активна';
-            })
-            ->editColumn('created_at', function ($item) {
-                return $item->created_at?->format('d.m.Y h:s');
-            })
-            ->editColumn('updated_at', function ($item) {
-                return $item->updated_at?->format('d.m.Y h:s');
             })
             ->addColumn('actions', function ($item) {
 
