@@ -15,6 +15,14 @@ class BaseRepository
         $this->model = $model;
     }
 
+    public function all($columns = ['*']): Collection|array
+    {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->get();
+    }
+
     public function findByID($id, $columns = ['*']): Model|Collection|Builder|array|null
     {
         return $this->model

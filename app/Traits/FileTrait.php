@@ -3,6 +3,8 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 trait FileTrait
 {
     public function upload($file, $folder = 'uploads'): array
@@ -23,6 +25,6 @@ trait FileTrait
 
     public function delete($path): void
     {
-        Storage::disk('public')->delete($path);
+        Storage::disk('public')->delete(Str::remove('/storage', $path));
     }
 }
