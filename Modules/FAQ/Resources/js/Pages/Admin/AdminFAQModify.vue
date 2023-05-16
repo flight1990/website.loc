@@ -44,7 +44,7 @@ import {useForm} from "@inertiajs/vue3";
 import SimpleTinyEditor from "@/Share/Admin/SimpleTinyEditor.vue";
 
 export default {
-    name: "FAQModify",
+    name: "AdminFAQModify",
     components: {SimpleTinyEditor},
     layout: AdminLayout,
     props: {

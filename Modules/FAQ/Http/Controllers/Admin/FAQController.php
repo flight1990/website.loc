@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\FAQ\Http\Controllers;
+namespace Modules\FAQ\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -25,12 +25,12 @@ class FAQController extends Controller
             return $this->FAQRepository->getAll(['id', 'question', 'is_active']);
         }
 
-        return Inertia::render('FAQ::FAQIndex');
+        return Inertia::render('FAQ::Admin/AdminFAQIndex');
     }
 
     public function create(): Response
     {
-        return Inertia::render('FAQ::FAQModify');
+        return Inertia::render('FAQ::Admin/AdminFAQModify');
     }
 
     public function store(CreateFAQRequest $request)
@@ -44,7 +44,7 @@ class FAQController extends Controller
     {
         $faq = $this->FAQRepository->findByID($id);
 
-        return Inertia::render('FAQ::FAQModify', [
+        return Inertia::render('FAQ::Admin/AdminFAQModify', [
             'faq' => $faq
         ]);
     }

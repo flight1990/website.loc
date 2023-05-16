@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Users\Http\Controllers\UsersController as AdminUsersController;
+use Modules\Users\Http\Controllers\Admin\UsersController as AdminUsersController;
 
 /*
 |--------------------------------------------------------------------------

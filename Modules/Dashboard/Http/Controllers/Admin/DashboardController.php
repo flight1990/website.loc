@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Dashboard\Http\Controllers;
+namespace Modules\Dashboard\Http\Controllers\Admin;
 
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
@@ -10,6 +10,6 @@ class DashboardController extends Controller
 {
     public function index(): Response
     {
-        return Inertia::render('Dashboard::DashboardIndex');
+        return Inertia::render('Dashboard::Admin/AdminDashboardIndex');
     }
 }

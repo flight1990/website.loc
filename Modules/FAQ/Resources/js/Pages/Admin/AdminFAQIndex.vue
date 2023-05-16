@@ -1,8 +1,8 @@
 <template>
-    <h1>Управление пользовтелями</h1>
+    <h1>Управление FAQ</h1>
 
-    <inertia-link href="/admin/users/create">
-        Создать нового пользователя
+    <inertia-link  href="/admin/faq/create">
+        Создать новое FAQ
     </inertia-link>
 
     <div>
@@ -10,8 +10,8 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>ФИО</th>
-                <th>Email</th>
+                <th>Вопрос</th>
+                <th>Статус</th>
                 <th>Операции</th>
             </tr>
             </thead>
@@ -23,27 +23,29 @@
 </template>
 
 <script>
+
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
 
 export default {
-    name: "UsersIndex",
+    name: "AdminFAQIndex",
     layout: AdminLayout,
     mounted() {
         $('#table').DataTable({
             serverSide: true,
             processing: true,
-            ajax: "/admin/users",
+            ajax: "/admin/faq",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'name', name: 'name'},
-                {data: 'email', name: 'email'},
+                {data: 'question', name: 'question'},
+                {data: 'is_active', name: 'is_active'},
                 {data: 'actions', name: 'actions', orderable: false, searchable: false},
             ],
             fnDrawCallback: function () {
                 replaceHtmlLinksToInertiaLinks('#table');
             }
         });
+
     }
 }
 </script>

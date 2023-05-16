@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Menu\Http\Controllers;
+namespace Modules\Menu\Http\Controllers\Admin;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,7 +25,7 @@ class MenusController extends Controller
     {
         $menus = $this->menuRepository->getNodeTreeMenus(['id', 'title', 'url', 'sort', 'is_active', 'parent_id', '_lft', '_rgt']);
 
-        return Inertia::render('Menu::MenuIndex', [
+        return Inertia::render('Menu::Admin/AdminMenuIndex', [
             'menus' => $menus
         ]);
     }
@@ -34,7 +34,7 @@ class MenusController extends Controller
     {
         $parents = $this->menuRepository->getRootMenusForCombobox();
 
-        return Inertia::render('Menu::MenuModify', [
+        return Inertia::render('Menu::Admin/AdminMenuModify', [
             'parents' => $parents
         ]);
     }
@@ -51,7 +51,7 @@ class MenusController extends Controller
         $menuItem = $this->menuRepository->findByID($id);
         $parents = $this->menuRepository->getRootMenusForCombobox($id);
 
-        return Inertia::render('Menu::MenuModify', [
+        return Inertia::render('Menu::Admin/AdminMenuModify', [
             'menuItem' => $menuItem,
             'parents' => $parents
         ]);

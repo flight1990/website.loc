@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\FAQ\Http\Controllers\FAQController as AdminFAQController;
+use Modules\FAQ\Http\Controllers\Admin\FAQController as AdminFAQController;
 
 /*
 |--------------------------------------------------------------------------

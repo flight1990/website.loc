@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Menu\Http\Controllers\MenusController as AdminMenusController;
+use Modules\Menu\Http\Controllers\Admin\MenusController as AdminMenusController;
 
 /*
 |--------------------------------------------------------------------------
