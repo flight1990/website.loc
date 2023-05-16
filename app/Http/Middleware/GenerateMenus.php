@@ -17,6 +17,7 @@ class GenerateMenus
                 $menu->item('dashboard')->add('Управление cтраницами сайта', route('admin.pages.index'))->active('admin/pages/*');
                 $menu->item('dashboard')->add('Управление навигацией сайта', route('admin.menus.index'))->active('admin/menus/*');
                 $menu->item('dashboard')->add('Управление промо-блоками сайта', route('admin.promos.index'))->active('admin/promos/*');
+                $menu->item('dashboard')->add('Управление FAQ сайта', route('admin.faq.index'))->active('admin/faq/*');
                 $menu->item('dashboard')->add('Управление галереей сайта', route('admin.gallery.index'))->active('admin/gallery/*');
                 $menu->item('dashboard')->add('Управление пользователями сайта', route('admin.users.index'))->active('admin/users/*');
                 $menu->add('Вернуться к сайту', route('guest.pages.index'));
