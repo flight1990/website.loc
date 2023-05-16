@@ -14,12 +14,13 @@ class GenerateMenus
         Menu::make('menu', function ($menu) {
             if (auth()->check()) {
                 $menu->add('Панель управления', route('admin.index'))->nickname('dashboard');
-                $menu->item('dashboard')->add('Управление cтраницами сайта', route('admin.pages.index'))->active('admin/pages/*');
-                $menu->item('dashboard')->add('Управление навигацией сайта', route('admin.menus.index'))->active('admin/menus/*');
-                $menu->item('dashboard')->add('Управление промо-блоками сайта', route('admin.promos.index'))->active('admin/promos/*');
-                $menu->item('dashboard')->add('Управление FAQ сайта', route('admin.faq.index'))->active('admin/faq/*');
-                $menu->item('dashboard')->add('Управление галереей сайта', route('admin.gallery.index'))->active('admin/gallery/*');
-                $menu->item('dashboard')->add('Управление пользователями сайта', route('admin.users.index'))->active('admin/users/*');
+                $menu->item('dashboard')->add('Управление cтраницами', route('admin.pages.index'))->active('admin/pages/*');
+                $menu->item('dashboard')->add('Управление навигацией', route('admin.menus.index'))->active('admin/menus/*');
+                $menu->item('dashboard')->add('Управление блоками', route('admin.promos.index'))->active('admin/promos/*');
+                $menu->item('dashboard')->add('Управление FAQ', route('admin.faq.index'))->active('admin/faq/*');
+                $menu->item('dashboard')->add('Управление отзывами', route('admin.reviews.index'))->active('admin/reviews/*');
+                $menu->item('dashboard')->add('Управление галереей', route('admin.gallery.index'))->active('admin/gallery/*');
+                $menu->item('dashboard')->add('Управление пользователями', route('admin.users.index'))->active('admin/users/*');
                 $menu->add('Вернуться к сайту', route('guest.pages.index'));
             }
         });
