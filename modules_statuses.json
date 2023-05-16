@@ -3,5 +3,6 @@
     "Menu": true,
     "Dashboard": true,
     "Users": true,
-    "Promos": true
+    "Promos": true,
+    "Gallery": true
 }

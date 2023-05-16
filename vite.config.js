@@ -17,6 +17,6 @@ export default defineConfig({
         },
     },
     ssr: {
-        noExternal: ['@inertiajs/server', 'lodash'],
+        noExternal: ['lodash'],
     },
 });
