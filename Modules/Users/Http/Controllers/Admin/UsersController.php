@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Users\Http\Controllers;
+namespace Modules\Users\Http\Controllers\Admin;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,7 +26,7 @@ class UsersController extends Controller
             return $this->userRepository->getAll(['id', 'name', 'email']);
         }
 
-        return Inertia::render('Users::UsersIndex');
+        return Inertia::render('Users::Admin/AdminUsersIndex');
     }
 
     public function create(): Response
@@ -45,7 +45,7 @@ class UsersController extends Controller
     {
         $user = $this->userRepository->findByID($id);
 
-        return Inertia::render('Users::UsersModify', [
+        return Inertia::render('Users::Admin/AdminUsersModify', [
             'user' => $user
         ]);
     }

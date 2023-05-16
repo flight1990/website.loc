@@ -27,7 +27,7 @@ import AdminLayout from "@/Layouts/AdminLayout.vue";
 import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
 
 export default {
-    name: "UsersIndex",
+    name: "AdminUsersIndex",
     layout: AdminLayout,
     mounted() {
         $('#table').DataTable({

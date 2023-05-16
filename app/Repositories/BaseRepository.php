@@ -23,6 +23,15 @@ class BaseRepository
             ->get();
     }
 
+    public function getAllOnlyActive(array $columns = ['*'])
+    {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->whereIsActive(1)
+            ->get();
+    }
+
     public function findByID($id, $columns = ['*']): Model|Collection|Builder|array|null
     {
         return $this->model

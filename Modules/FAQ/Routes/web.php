@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Users\Http\Controllers\Admin\UsersController as AdminUsersController;
+use Modules\FAQ\Http\Controllers\Admin\FAQController as AdminFAQController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,7 @@ use Modules\Users\Http\Controllers\Admin\UsersController as AdminUsersController
 */
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
-    Route::controller(AdminUsersController::class)->name('users.')->prefix('users')->group(function () {
+    Route::controller(AdminFAQController::class)->name('faq.')->prefix('faq')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');

@@ -13,15 +13,6 @@ class PromoRepository extends BaseRepository
         parent::__construct($model);
     }
 
-    public function getAllOnlyActive(array $columns = ['*'])
-    {
-        return $this->model
-            ->query()
-            ->select($columns)
-            ->whereIsActive(1)
-            ->get();
-    }
-
     public function getAll(array $columns = ['*'])
     {
         return DataTables::eloquent($this->model->query()->select($columns))

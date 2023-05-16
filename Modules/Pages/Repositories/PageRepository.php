@@ -17,8 +17,8 @@ class PageRepository extends BaseRepository
     {
         return DataTables::eloquent($this->model->query()
             ->select($columns))
-            ->editColumn('updated_at', function ($item) {
-                return $item->updated_at?->format('d.m.Y h:s');
+            ->editColumn('is_active', function ($item) {
+                return $item->is_active ? 'Активна' : 'Не активна';
             })
             ->addColumn('actions', function ($item) {
 

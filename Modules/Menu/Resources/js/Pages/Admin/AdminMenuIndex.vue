@@ -17,7 +17,7 @@ import NestedDraggable from "./infra/NestedDraggable.vue";
 import {debounce} from "lodash";
 
 export default {
-    name: "MenuIndex",
+    name: "AdminMenuIndex",
     layout: AdminLayout,
     components: {
         NestedDraggable

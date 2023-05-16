@@ -6,7 +6,7 @@
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 
 export default {
-    name: "DashboardIndex",
+    name: "AdminDashboardIndex",
     layout: AdminLayout
 }
 </script>

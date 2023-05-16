@@ -17,12 +17,6 @@ class UserRepository extends BaseRepository
     {
         return DataTables::eloquent($this->model->query()
             ->select($columns))
-            ->editColumn('created_at', function ($item) {
-                return $item->created_at?->format('d.m.Y h:s');
-            })
-            ->editColumn('updated_at', function ($item) {
-                return $item->updated_at?->format('d.m.Y h:s');
-            })
             ->addColumn('actions', function ($item) {
 
                 $editLink = '<a href="/admin/users/'.$item->id.'/edit">Редактировать</a>';
