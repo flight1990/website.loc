@@ -1,0 +1,23 @@
+<?php
+
+namespace Modules\Reviews\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateReviewRequest extends FormRequest
+{
+    public function rules(): array
+    {
+        return [
+            'title' => ['required', 'string', 'max:191'],
+            'content' => ['required', 'string'],
+            'is_active' => ['nullable', 'boolean'],
+            'client' => ['required', 'string', 'max:191']
+        ];
+    }
+
+    public function authorize(): bool
+    {
+        return true;
+    }
+}
