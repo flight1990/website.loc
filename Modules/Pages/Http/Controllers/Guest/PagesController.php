@@ -25,7 +25,7 @@ class PagesController extends Controller
     public function index(): Response
     {
         $promos = $this->promoRepository->getAllOnlyActive(['id', 'title', 'url', 'img', 'content']);
-        $faqs = $this->FAQRepository->all(['id', 'question', 'answer']);
+        $faqs = $this->FAQRepository->getAllOnlyActive(['id', 'question', 'answer']);
 
         return Inertia::render('Pages::Guest/GuestPagesIndex', [
             'promos' => $promos,
