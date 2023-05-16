@@ -20,6 +20,7 @@
         </div>
 
         <button
+            v-if="form.images.length"
             :disabled="form.processing"
             @click.prevent="upload"
         >
