@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Reviews\Http\Controllers\ReviewsController as AdminReviewsController;
+use Modules\Reviews\Http\Controllers\Admin\ReviewsController as AdminReviewsController;
+use Modules\Reviews\Http\Controllers\Guest\ReviewsController as GuestReviewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,11 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::patch('/{id}', 'update')->name('update');
         Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+});
+
+Route::name('guest.')->group(function () {
+    Route::controller(GuestReviewsController::class)->name('reviews')->prefix('reviews')->group(function () {
+        Route::post('/', 'store')->name('store');
     });
 });

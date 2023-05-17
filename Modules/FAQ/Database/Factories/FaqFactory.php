@@ -12,7 +12,9 @@ class FaqFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'question' => ucfirst($this->faker->words(rand(2, 4), true)).'?',
+            'answer' => $this->faker->realText(400),
+            'is_active' => true
         ];
     }
 }

@@ -1,8 +1,8 @@
 <template>
     <div class="promo">
-        <img :src="promo.img" alt="" style="width: 350px;" v-if="promo.img">
 
-        <h3>{{ promo.title }}</h3>
+        <img :src="promo.img" alt="" style="width: 350px;" v-if="promo.img">
+        <h1>{{ promo.title }}</h1>
         <div v-html="promo.content"></div>
 
         <a :href="promo.url" v-if="promo.url">Подробнее</a>

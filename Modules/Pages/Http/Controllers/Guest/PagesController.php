@@ -8,28 +8,33 @@ use Inertia\Response;
 use Modules\FAQ\Repositories\FAQRepository;
 use Modules\Pages\Repositories\PageRepository;
 use Modules\Promos\Repositories\PromoRepository;
+use Modules\Reviews\Repositories\ReviewRepository;
 
 class PagesController extends Controller
 {
     protected PageRepository $pageRepository;
     protected PromoRepository $promoRepository;
     protected FAQRepository $FAQRepository;
+    protected ReviewRepository $reviewRepository;
 
-    public function __construct(PageRepository $pageRepository, PromoRepository $promoRepository, FAQRepository $FAQRepository)
+    public function __construct(PageRepository $pageRepository, PromoRepository $promoRepository, FAQRepository $FAQRepository, ReviewRepository $reviewRepository)
     {
         $this->pageRepository = $pageRepository;
         $this->promoRepository = $promoRepository;
         $this->FAQRepository = $FAQRepository;
+        $this->reviewRepository = $reviewRepository;
     }
 
     public function index(): Response
     {
         $promos = $this->promoRepository->getAllOnlyActive(['id', 'title', 'url', 'img', 'content']);
         $faqs = $this->FAQRepository->getAllOnlyActive(['id', 'question', 'answer']);
+        $reviews = $this->reviewRepository->getAllOnlyActive(['id', 'title', 'content', 'client']);
 
         return Inertia::render('Pages::Guest/GuestPagesIndex', [
             'promos' => $promos,
-            'faqs' => $faqs
+            'faqs' => $faqs,
+            'reviews' => $reviews
         ]);
     }
 

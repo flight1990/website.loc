@@ -4,6 +4,7 @@ namespace Modules\FAQ\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\FAQ\Models\Faq;
 
 class FaqTableSeeder extends Seeder
 {
@@ -16,6 +17,6 @@ class FaqTableSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        Faq::factory(5)->create();
     }
 }
