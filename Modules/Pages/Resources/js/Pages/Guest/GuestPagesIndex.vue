@@ -10,6 +10,19 @@
 
     </div>
 
+
+    <div v-if="albums.length">
+
+        <h1>Галлерея</h1>
+
+        <AlbumComponent
+            v-for="album in albums" :key="album.id"
+            :album="album"
+        />
+
+    </div>
+
+
     <div v-if="faqs.length">
 
         <h1>FAQ</h1>
@@ -44,10 +57,11 @@ import PromoComponent from "../../Components/Guest/PromoComponent.vue";
 import FaqComponent from "../../Components/Guest/FaqComponent.vue";
 import ReviewComponent from "../../Components/Guest/ReviewComponent.vue";
 import ReviewFormComponent from "../../Components/Guest/ReviewFormComponent.vue";
+import AlbumComponent from "../../../../../Gallery/Resources/js/Components/Guest/AlbumComponent.vue";
 
 export default {
     name: "GuestPagesIndex",
-    components: {PromoComponent, FaqComponent, ReviewComponent, ReviewFormComponent},
+    components: {PromoComponent, FaqComponent, ReviewComponent, ReviewFormComponent, AlbumComponent},
     layout: GuestLayout,
     props: {
         promos: {
@@ -64,7 +78,12 @@ export default {
             type: Array,
             required: false,
             default: () => []
-        }
+        },
+        albums: {
+            type: Array,
+            required: false,
+            default: () => []
+        },
     },
 }
 </script>
