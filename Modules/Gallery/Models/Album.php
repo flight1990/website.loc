@@ -34,4 +34,14 @@ class Album extends Model
     {
         return $this->hasMany(Photo::class);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->whereIsActive(1);
+    }
+
+    public function scopeSlug($query, $slug)
+    {
+        return $query->whereSlug($slug);
+    }
 }

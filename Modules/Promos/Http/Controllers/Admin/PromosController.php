@@ -2,6 +2,7 @@
 
 namespace Modules\Promos\Http\Controllers\Admin;
 
+use DataTables;
 use App\Traits\FileTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -10,23 +11,34 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Promos\Http\Requests\CreatePromoRequest;
 use Modules\Promos\Http\Requests\UpdatePromoRequest;
-use Modules\Promos\Repositories\PromoRepository;
+use Modules\Promos\Models\Promo;
 
 class PromosController extends Controller
 {
     use FileTrait;
 
-    protected PromoRepository $promoRepository;
-
-    public function __construct(PromoRepository $promoRepository)
-    {
-        $this->promoRepository = $promoRepository;
-    }
-
     public function index(Request $request)
     {
         if ($request->ajax() && !$request->inertia()) {
-            return $this->promoRepository->getAll(['id', 'title', 'url', 'is_active', 'img']);
+
+            $query = Promo::query()->select(['id', 'title', 'url', 'is_active', 'img']);
+
+            return DataTables::eloquent($query)
+                ->editColumn('img', function ($item) {
+                    return "<img src='{$item->img}'  alt='{$item->title}' width='200'>";
+                })
+                ->editColumn('is_active', function ($item) {
+                    return $item->is_active ? 'Активна' : 'Не активна';
+                })
+                ->addColumn('actions', function ($item) {
+
+                    $editLink = '<a href="/admin/promos/'.$item->id.'/edit">Редактировать</a>';
+                    $deleteLink = '<a href="/admin/promos/'.$item->id.'" data-method="delete">Удалить</a>';
+
+                    return $editLink.' '.$deleteLink;
+                })
+                ->rawColumns(['actions', 'img'])
+                ->toJson();
         }
 
         return Inertia::render('Promos::Admin/AdminPromosIndex');
@@ -46,14 +58,16 @@ class PromosController extends Controller
             $payload['img'] = $img['location'];
         }
 
-        $this->promoRepository->create($payload);
+        Promo::create($payload);
 
         return redirect()->route('admin.promos.index');
     }
 
     public function edit($id): Response
     {
-        $promo = $this->promoRepository->findByID($id);
+        $promo = Promo::query()
+            ->select(['id', 'title', 'content', 'url', 'is_active', 'img'])
+            ->findOrFail($id);
 
         return Inertia::render('Promos::Admin/AdminPromosModify', [
             'promo' => $promo
@@ -69,14 +83,16 @@ class PromosController extends Controller
             $payload['img'] = $img['location'];
         }
 
-        $this->promoRepository->update($payload, $id);
+        $promo = Promo::query()->findOrFail($id);
+        $promo->update($payload);
 
         return redirect()->route('admin.promos.index');
     }
 
     public function destroy($id): RedirectResponse
     {
-        $this->promoRepository->delete($id);
+        $promo = Promo::query()->findOrFail($id);
+        $promo->delete();
 
         return redirect()->route('admin.promos.index');
     }

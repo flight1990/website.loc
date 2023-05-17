@@ -2,6 +2,7 @@
 
 namespace Modules\Pages\Http\Controllers\Admin;
 
+use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
@@ -9,21 +10,31 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Pages\Http\Requests\CreatePageRequest;
 use Modules\Pages\Http\Requests\UpdatePageRequest;
-use Modules\Pages\Repositories\PageRepository;
+use Modules\Pages\Models\Page;
 
 class PagesController extends Controller
 {
-    protected PageRepository $pageRepository;
-
-    public function __construct(PageRepository $pageRepository)
-    {
-        $this->pageRepository = $pageRepository;
-    }
-
     public function index(Request $request)
     {
         if ($request->ajax() && !$request->inertia()) {
-            return $this->pageRepository->getAll(['id', 'title', 'slug', 'is_active']);
+
+            $query = Page::query()
+                ->select(['id', 'title', 'slug', 'is_active']);
+
+            return DataTables::eloquent($query)
+                ->editColumn('is_active', function ($item) {
+                    return $item->is_active ? 'Активна' : 'Не активна';
+                })
+                ->addColumn('actions', function ($item) {
+
+                    $showLink = '<a href="/admin/pages/'.$item->id.'">Просмотр</a>';
+                    $editLink = '<a href="/admin/pages/'.$item->id.'/edit">Редактировать</a>';
+                    $deleteLink = '<a href="/admin/pages/'.$item->id.'" data-method="delete">Удалить</a>';
+
+                    return $showLink.' '.$editLink.' '.$deleteLink;
+                })
+                ->rawColumns(['actions'])
+                ->toJson();
         }
 
         return Inertia::render('Pages::Admin/AdminPagesIndex');
@@ -36,14 +47,15 @@ class PagesController extends Controller
 
     public function store(CreatePageRequest $request): RedirectResponse
     {
-        $this->pageRepository->create($request->validated());
-
+        Page::create($request->validated());
         return redirect()->route('admin.pages.index');
     }
 
     public function show($id): Response
     {
-        $page = $this->pageRepository->findByID($id);
+        $page = Page::query()
+            ->select(['id', 'title', 'content'])
+            ->findOrFail($id);
 
         return Inertia::render('Pages::Admin/AdminPagesShow', [
             'page' => $page
@@ -52,7 +64,9 @@ class PagesController extends Controller
 
     public function edit($id): Response
     {
-        $page = $this->pageRepository->findByID($id);
+        $page = Page::query()
+            ->select(['id', 'title', 'content', 'is_active', 'meta_keywords', 'meta_description'])
+            ->findOrFail($id);
 
         return Inertia::render('Pages::Admin/AdminPagesModify', [
             'page' => $page
@@ -61,14 +75,16 @@ class PagesController extends Controller
 
     public function update(UpdatePageRequest $request, $id): RedirectResponse
     {
-        $this->pageRepository->update($request->validated(), $id);
+        $page = Page::query()->findOrFail($id);
+        $page->update($request->validated());
 
         return redirect()->route('admin.pages.index');
     }
 
     public function destroy($id): RedirectResponse
     {
-        $this->pageRepository->delete($id);
+        $page = Page::query()->findOrFail($id);
+        $page->delete();
 
         return redirect()->route('admin.pages.index');
     }

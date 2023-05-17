@@ -28,4 +28,9 @@ class Promo extends Model
     {
         return PromoFactory::new();
     }
+
+    public function scopeActive($query)
+    {
+        return $query->whereIsActive(1);
+    }
 }

@@ -27,4 +27,14 @@ class Menu extends Model
     {
         return MenuFactory::new();
     }
+
+    public function scopeRoots($query)
+    {
+        return $query->whereNull('parent_id');
+    }
+
+    public function scopeWithoutSelf($query, $id)
+    {
+        return $query->where('id', '!=', $id);
+    }
 }
