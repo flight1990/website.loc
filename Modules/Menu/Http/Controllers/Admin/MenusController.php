@@ -48,6 +48,7 @@ class MenusController extends Controller
     {
         $menuItem = Menu::query()
             ->select(['id', 'title', 'url', 'parent_id', 'is_active'])
+            ->withCount('children')
             ->findOrFail($id);
 
         $parents = Menu::query()
