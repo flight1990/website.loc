@@ -1,7 +1,7 @@
 <template>
     <h1>Главная</h1>
 
-    <div v-if="promos.length">
+    <div v-if="promos?.length">
 
         <PromoComponent
             v-for="promo in promos" :key="promo.id"
@@ -10,8 +10,7 @@
 
     </div>
 
-
-    <div v-if="albums.length">
+    <div v-if="albums?.length">
 
         <h1>Галлерея</h1>
 
@@ -21,7 +20,6 @@
         />
 
     </div>
-
 
     <div v-if="faqs.length">
 
@@ -34,7 +32,7 @@
 
     </div>
 
-    <div v-if="reviews.length">
+    <div v-if="reviews?.length">
 
         <h1>Отзывы</h1>
 
@@ -45,19 +43,19 @@
 
     </div>
 
-    <ReviewFormComponent />
-
+    <ReviewFormComponent/>
 
 </template>
 
 <script>
 
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import PromoComponent from "../../Components/Guest/PromoComponent.vue";
-import FaqComponent from "../../Components/Guest/FaqComponent.vue";
-import ReviewComponent from "../../Components/Guest/ReviewComponent.vue";
-import ReviewFormComponent from "../../Components/Guest/ReviewFormComponent.vue";
+
 import AlbumComponent from "../../../../../Gallery/Resources/js/Components/Guest/AlbumComponent.vue";
+import FaqComponent from "../../../../../FAQ/Resources/js/Components/Guest/FaqComponent.vue";
+import ReviewComponent from "../../../../../Reviews/Resources/js/Components/Guest/ReviewComponent.vue";
+import ReviewFormComponent from "../../../../../Reviews/Resources/js/Components/Guest/ReviewFormComponent.vue";
+import PromoComponent from "../../../../../Promos/Resources/js/Components/Guest/PromoComponent.vue";
 
 export default {
     name: "GuestPagesIndex",
