@@ -2,64 +2,38 @@
 
 namespace Modules\Gallery\Http\Controllers\Admin;
 
-use App\Traits\FileTrait;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
-use Inertia\Response;
-use Modules\Gallery\Http\Requests\CreateGalleryRequest;
-use Modules\Gallery\Repositories\GalleryRepository;
 
 class GalleryController extends Controller
 {
-    use FileTrait;
-
-    protected GalleryRepository $galleryRepository;
-
-    public function __construct(GalleryRepository $galleryRepository)
+    public function index()
     {
-        $this->galleryRepository = $galleryRepository;
+        return Inertia::render('Gallery::Admin/AdminGalleryIndex');
     }
-
-    public function index(): Response
+    public function create()
     {
-        $images = $this->galleryRepository->all(['id', 'img']);
 
-        return Inertia::render('Gallery::Admin/AdminGalleryIndex', [
-            'images' => $images
-        ]);
     }
-
-    public function store(CreateGalleryRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        if (!empty($request->images)) {
-
-            $images = $request->images;
-
-            DB::transaction(function () use ($images) {
-                foreach ($images as $file) {
-                    $image = $this->upload($file, 'gallery');
-
-                    $this->galleryRepository->create([
-                        'img' => ['original' => $image['location']]
-                    ]);
-                }
-            });
-
-        }
-
-        return redirect()->route('admin.gallery.index');
+        //
     }
-
-    public function destroy($id): RedirectResponse
+    public function show($id)
     {
-        $image = $this->galleryRepository->findByID($id);
 
-        $this->delete($image->img['original']);
+    }
+    public function edit($id)
+    {
 
-        $image->delete();
-
-        return redirect()->route('admin.gallery.index');
+    }
+    public function update(Request $request, $id)
+    {
+        //
+    }
+    public function destroy($id)
+    {
+        //
     }
 }

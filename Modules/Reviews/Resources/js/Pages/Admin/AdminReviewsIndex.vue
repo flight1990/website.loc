@@ -1,5 +1,5 @@
 <template>
-    <h1>Управление отзывами</h1>
+    <h1>Отзывы</h1>
 
     <inertia-link href="/admin/reviews/create">
         Создать новый отзыв

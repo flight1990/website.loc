@@ -1,5 +1,5 @@
 <template>
-    <h1>Управление FAQ</h1>
+    <h1>FAQ</h1>
 
     <inertia-link  href="/admin/faq/create">
         Создать новое FAQ

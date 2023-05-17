@@ -1,22 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Gallery\Http\Controllers\Admin\GalleryController as AdminGalleryController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
+use Modules\Gallery\Http\Controllers\Guest\GalleryController as GuestGalleryController;
+use Modules\Gallery\Http\Controllers\Admin\GalleryController as AdminGalleryController;
+
+Route::name('admin.')->prefix('admin')->group(function () {
     Route::controller(AdminGalleryController::class)->name('gallery.')->prefix('gallery')->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+});
+
+Route::name('guest.')->group(function () {
+    Route::controller(GuestGalleryController::class)->name('gallery.')->prefix('gallery')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{slug}', 'show')->name('show');
     });
 });

@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         create() {
-            this.form.post('/reviews', {preserveScroll: true, preserveState: false});
+            this.form.post('/reviews', {preserveScroll: true});
         },
     }
 }

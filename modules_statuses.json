@@ -4,7 +4,7 @@
     "Dashboard": true,
     "Users": true,
     "Promos": true,
-    "Gallery": true,
     "FAQ": true,
-    "Reviews": true
+    "Reviews": true,
+    "Gallery": true
 }

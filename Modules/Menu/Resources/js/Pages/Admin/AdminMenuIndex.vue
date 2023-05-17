@@ -1,5 +1,5 @@
 <template>
-    <h1>Управление меню сайта</h1>
+    <h1>Меню</h1>
 
     <inertia-link href="/admin/menus/create">
         Создать пункт меню
