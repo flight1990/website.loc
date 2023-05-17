@@ -5,6 +5,7 @@ namespace Modules\Menu\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Menu\Models\Menu;
+use Modules\Pages\Models\Page;
 
 class MenuTableSeeder extends Seeder
 {
@@ -17,6 +18,17 @@ class MenuTableSeeder extends Seeder
     {
         Model::unguard();
 
-        Menu::factory(4)->create();
+        $pages = Page::query()
+            ->select(['title', 'slug'])
+            ->whereIsActive(1)
+            ->get();
+
+        foreach ($pages as $page) {
+            Menu::create([
+                'title' => $page->title,
+                'url' => $page->slug,
+                'is_active' => true
+            ]);
+        }
     }
 }

@@ -17,6 +17,6 @@ class PagesTableSeeder extends Seeder
     {
         Model::unguard();
 
-        Page::factory(5)->create();
+        Page::factory(4)->create();
     }
 }

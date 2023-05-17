@@ -4,8 +4,9 @@ namespace Modules\Promos\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Promos\Models\Promo;
 
-class PromosDatabaseSeeder extends Seeder
+class PromosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +17,6 @@ class PromosDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        Promo::factory(2)->create();
     }
 }

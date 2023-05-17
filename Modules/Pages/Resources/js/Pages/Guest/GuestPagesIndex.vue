@@ -21,9 +21,9 @@
 
     </div>
 
-    <h1>Отзывы</h1>
-
     <div v-if="reviews.length">
+
+        <h1>Отзывы</h1>
 
         <ReviewComponent
             v-for="review in reviews" :key="review.id"

@@ -24,7 +24,7 @@ class PageFactory extends Factory
         return [
             'title' => ucfirst($this->faker->words(rand(1,4), true)),
             'content' => $this->faker->realText(750),
-            'is_active' => $this->faker->boolean,
+            'is_active' => true,
             'meta_keywords' => $this->faker->words(rand(1,4), true),
             'meta_description' =>$this->faker->words(rand(1,4), true),
         ];
