@@ -2,7 +2,6 @@
     <h1>{{ menuItem ? 'Редактировать' : 'Создать' }} пункт меню</h1>
 
     <form>
-
         <div>
             <label for="parent_id">Родитель</label>
             <select id="parent_id" v-model="form.parent_id">
