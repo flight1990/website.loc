@@ -25,4 +25,9 @@ class Review extends Model
     {
         return ReviewFactory::new();
     }
+
+    public function scopeActive($query)
+    {
+        return $query->whereIsActive(1);
+    }
 }

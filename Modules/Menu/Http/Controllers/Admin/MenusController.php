@@ -9,21 +9,17 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Menu\Http\Requests\CreateMenuRequest;
 use Modules\Menu\Http\Requests\UpdateMenuRequest;
-use Modules\Menu\Repositories\MenuRepository;
+use Modules\Menu\Models\Menu;
 
 class MenusController extends Controller
 {
-
-    protected MenuRepository $menuRepository;
-
-    public function __construct(MenuRepository $menuRepository)
-    {
-        $this->menuRepository = $menuRepository;
-    }
-
     public function index(): Response
     {
-        $menus = $this->menuRepository->getNodeTreeMenus(['id', 'title', 'url', 'sort', 'is_active', 'parent_id', '_lft', '_rgt']);
+        $menus = Menu::query()
+            ->select(['id', 'title', 'url', 'sort', 'is_active', 'parent_id', '_lft', '_rgt'])
+            ->get()
+            ->sortBy('sort')
+            ->toTree();
 
         return Inertia::render('Menu::Admin/AdminMenuIndex', [
             'menus' => $menus
@@ -32,7 +28,10 @@ class MenusController extends Controller
 
     public function create(): Response
     {
-        $parents = $this->menuRepository->getRootMenusForCombobox();
+        $parents = Menu::query()
+            ->select(['id', 'title'])
+            ->roots()
+            ->get();
 
         return Inertia::render('Menu::Admin/AdminMenuModify', [
             'parents' => $parents
@@ -41,15 +40,21 @@ class MenusController extends Controller
 
     public function store(CreateMenuRequest $request): RedirectResponse
     {
-        $this->menuRepository->create($request->validated());
-
+        Menu::create($request->validated());
         return redirect()->route('admin.menus.index');
     }
 
     public function edit($id): Response
     {
-        $menuItem = $this->menuRepository->findByID($id);
-        $parents = $this->menuRepository->getRootMenusForCombobox($id);
+        $menuItem = Menu::query()
+            ->select(['id', 'title', 'url', 'parent_id', 'is_active'])
+            ->findOrFail($id);
+
+        $parents = Menu::query()
+            ->select(['id', 'title'])
+            ->roots()
+            ->withoutSelf($id)
+            ->get();
 
         return Inertia::render('Menu::Admin/AdminMenuModify', [
             'menuItem' => $menuItem,
@@ -59,22 +64,23 @@ class MenusController extends Controller
 
     public function update(UpdateMenuRequest $request, $id): RedirectResponse
     {
-        $this->menuRepository->update($request->validated(), $id);
+        $menu = Menu::query()->findOrFail($id);
+        $menu->update($request->validated());
 
         return redirect()->route('admin.menus.index');
     }
 
     public function destroy($id): RedirectResponse
     {
-        $this->menuRepository->delete($id);
+        $menu = Menu::query()->findOrFail($id);
+        $menu->delete();
 
         return redirect()->route('admin.menus.index');
     }
 
     public function rebuild(Request $request)
     {
-        $this->menuRepository->rebuildTree($request->menu);
-
+        Menu::query()->rebuildTree($request->menu);
         return response('Дерево перестроено.');
     }
 }

@@ -23,10 +23,7 @@ class Page extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
-        'created_at' => 'date:d.m.Y',
-        'updated_at' => 'date:d.m.Y',
     ];
-
 
     protected static function newFactory(): PageFactory
     {
@@ -38,5 +35,15 @@ class Page extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->whereIsActive(1);
+    }
+
+    public function scopeSlug($query, $slug)
+    {
+        return $query->whereSlug($slug);
     }
 }

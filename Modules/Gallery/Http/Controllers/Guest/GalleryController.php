@@ -5,21 +5,16 @@ namespace Modules\Gallery\Http\Controllers\Guest;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
-use Modules\Gallery\Repositories\AlbumRepository;
+use Modules\Gallery\Models\Album;
 
 class GalleryController extends Controller
 {
-    protected AlbumRepository $albumRepository;
-
-    public function __construct(AlbumRepository $albumRepository)
-    {
-        $this->albumRepository = $albumRepository;
-    }
-
     public function index()
     {
-        $albums = $this->albumRepository->all(['id','title', 'description', 'slug',
-            DB::raw('(select img from photos where album_id = albums.id  order by id asc limit 1) as cover')]);
+        $albums = Album::query()->select(['id','title', 'description', 'slug',
+            DB::raw('(select img from photos where album_id = albums.id  order by id asc limit 1) as cover')])
+            ->latest()
+            ->get();
 
         return Inertia::render('Gallery::Guest/GuestGalleryIndex', [
             'albums' => $albums
@@ -27,7 +22,13 @@ class GalleryController extends Controller
     }
     public function show($slug)
     {
-        $album = $this->albumRepository->findBySlugWithPhotos($slug);
+        $album = Album::query()
+            ->select(['id', 'title', 'slug', 'description'])
+            ->slug($slug)
+            ->with('photos', function ($q) {
+                $q->select(['id', 'img', 'album_id']);
+            })
+            ->firstOrFail();
 
         return Inertia::render('Gallery::Guest/GuestGalleryShow', [
             'album' => $album

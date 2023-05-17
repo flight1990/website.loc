@@ -24,4 +24,9 @@ class Faq extends Model
     {
         return FaqFactory::new();
     }
+
+    public function scopeActive($query)
+    {
+        return $query->whereIsActive(1);
+    }
 }

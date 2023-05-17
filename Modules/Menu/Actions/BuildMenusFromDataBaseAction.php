@@ -2,18 +2,17 @@
 
 namespace Modules\Menu\Actions;
 
-use Modules\Menu\Repositories\MenuRepository;
+use Modules\Menu\Models\Menu;
 
 class BuildMenusFromDataBaseAction
 {
-    public function __construct(MenuRepository $menuRepository)
-    {
-        $this->menuRepository = $menuRepository;
-    }
-
     public function run($menu)
     {
-        $node = $this->menuRepository->getNodeTreeMenus(['id', 'title', 'url', 'parent_id', '_lft', '_rgt', 'sort']);
+        $node = Menu::query()
+            ->select(['id', 'title', 'url', 'parent_id', '_lft', '_rgt', 'sort'])
+            ->get()
+            ->sortBy('sort')
+            ->toTree();
 
         $menuBuilder = function ($menus, $parent = null) use (&$menuBuilder, &$menu) {
 
