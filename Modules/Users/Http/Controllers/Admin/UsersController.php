@@ -31,7 +31,7 @@ class UsersController extends Controller
 
     public function create(): Response
     {
-        return Inertia::render('Users::UsersModify');
+        return Inertia::render('Users::Admin/AdminUsersModify');
     }
 
     public function store(CreateUserRequest $request): RedirectResponse

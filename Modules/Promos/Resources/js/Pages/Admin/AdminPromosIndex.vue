@@ -1,8 +1,8 @@
 <template>
-    <h1>Управление промо-блоками</h1>
+    <h1>Промо</h1>
 
     <inertia-link href="/admin/promos/create">
-        Создать новый промо-блок
+        Создать промо
     </inertia-link>
 
     <div>

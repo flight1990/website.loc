@@ -1,5 +1,5 @@
 <template>
-    <h1>Управление страницами</h1>
+    <h1>Страницы</h1>
 
     <inertia-link href="/admin/pages/create">
         Создать новую страницу
