@@ -8,6 +8,12 @@ use Modules\Gallery\Http\Controllers\Admin\GalleryController as AdminGalleryCont
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::controller(AdminGalleryController::class)->name('gallery.')->prefix('gallery')->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::patch('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::delete('/photos/{id}', 'deletePhoto')->name('deletePhoto');
     });
 });
 
