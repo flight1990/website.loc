@@ -32,6 +32,16 @@ class BaseRepository
             ->get();
     }
 
+    public function getLatest(array $columns = ['*'], int $limit = 5)
+    {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->latest()
+            ->limit($limit)
+            ->get();
+    }
+
     public function getLatestOnlyActive(array $columns = ['*'], int $limit = 5)
     {
         return $this->model

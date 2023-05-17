@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Modules\FAQ\Database\Seeders\FaqTableSeeder;
+use Modules\Gallery\Database\Seeders\GalleryDatabaseSeeder;
 use Modules\Menu\Database\Seeders\MenuTableSeeder;
 use Modules\Pages\Database\Seeders\PagesTableSeeder;
 use Modules\Promos\Database\Seeders\PromosTableSeeder;
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ReviewTableSeeder::class,
             PromosTableSeeder::class,
             UsersTableSeeder::class,
+            GalleryDatabaseSeeder::class
         ]);
     }
 }

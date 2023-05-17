@@ -19,6 +19,7 @@ class GenerateMenus
                 $menu->item('dashboard')->add('Промо', route('admin.promos.index'))->active('admin/promos/*');
                 $menu->item('dashboard')->add('FAQ', route('admin.faq.index'))->active('admin/faq/*');
                 $menu->item('dashboard')->add('Отзывы', route('admin.reviews.index'))->active('admin/reviews/*');
+                $menu->item('dashboard')->add('Галлерея', route('admin.gallery.index'))->active('admin/gallery/*');
                 $menu->item('dashboard')->add('Пользователи', route('admin.users.index'))->active('admin/users/*');
                 $menu->add('Вернуться к сайту', route('guest.pages.index'));
             }
@@ -29,6 +30,7 @@ class GenerateMenus
     {
         Menu::make('menu', function ($menu) {
             $menu->add('Главаня', route('guest.pages.index'));
+            $menu->add('Галлерея', route('guest.gallery.index'))->active('gallery/*');
             app(BuildMenusFromDataBaseAction::class)->run($menu);
             $menu->add('Панель управления', route('admin.index'));
         });
