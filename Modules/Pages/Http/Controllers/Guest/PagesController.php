@@ -29,7 +29,7 @@ class PagesController extends Controller
     {
         $promos = $this->promoRepository->getAllOnlyActive(['id', 'title', 'url', 'img', 'content']);
         $faqs = $this->FAQRepository->getAllOnlyActive(['id', 'question', 'answer']);
-        $reviews = $this->reviewRepository->getAllOnlyActive(['id', 'title', 'content', 'client']);
+        $reviews = $this->reviewRepository->getLatestOnlyActive(['id', 'title', 'content', 'client']);
 
         return Inertia::render('Pages::Guest/GuestPagesIndex', [
             'promos' => $promos,
