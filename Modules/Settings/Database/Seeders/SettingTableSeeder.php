@@ -14,10 +14,20 @@ class SettingTableSeeder extends Seeder
 
         $settings = [
             [
-                'name' => 'Название сайта',
-                'key' => 'site_name',
-                'value' => 'Site Name'
-            ]
+                'name' => 'Телефон',
+                'key' => 'phone',
+                'value' => '+375295230681'
+            ],
+            [
+                'name' => 'Электронная почта',
+                'key' => 'email',
+                'value' => 'vladimirborisiuk@gmail.com'
+            ],
+            [
+                'name' => 'Адрес',
+                'key' => 'address',
+                'value' => 'Янки Купалы 15 а'
+            ],
         ];
 
         foreach ($settings as $setting) {
