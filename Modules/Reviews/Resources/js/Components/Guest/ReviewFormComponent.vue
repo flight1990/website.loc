@@ -11,7 +11,7 @@
 
         <div>
             <label for="content">Отзыв</label>
-            <TinyEditor id="content" v-model="form.content" />
+            <SimpleTinyEditor id="content" v-model="form.content" />
             <small>{{ form.errors.content }}</small>
         </div>
 
@@ -28,11 +28,11 @@
 
 <script>
 import {useForm} from "@inertiajs/vue3";
-import TinyEditor from "@/Share/Admin/TinyEditor.vue";
+import SimpleTinyEditor from "@/Share/Admin/SimpleTinyEditor.vue";
 
 export default {
     name: "ReviewFormComponent",
-    components: {TinyEditor},
+    components: {SimpleTinyEditor},
     data() {
         return {
             form: useForm({
