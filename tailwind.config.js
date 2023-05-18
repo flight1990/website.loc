@@ -8,7 +8,22 @@ module.exports = {
     ],
     darkMode: 'class',
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'primary': {
+                    '50': '#f3fbfe',
+                    '100': '#e7f6fd',
+                    '200': '#c3e9fa',
+                    '300': '#9fdbf6',
+                    '400': '#56c0f0',
+                    '500': '#0ea5e9',
+                    '600': '#0d95d2',
+                    '700': '#0b7caf',
+                    '800': '#08638c',
+                    '900': '#075172'
+                }
+            },
+        },
     },
     plugins: [
         require('@tailwindcss/typography'),
