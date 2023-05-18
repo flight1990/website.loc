@@ -16,7 +16,10 @@
 
         <div>
             <label for="photos">Добавить фотографии</label>
-            <input type="file" @input="form.photos = $event.target.files" multiple  accept="image/png, image/jpeg" />
+            <input type="file" @input="form.photos = $event.target.files" multiple  accept="image/png, image/jpeg, image/jpg" />
+
+            <small>Максимум 4</small>
+
             <small>{{ form.errors.photos }}</small>
 
             <progress v-if="form.progress" :value="form.progress.percentage" max="100">

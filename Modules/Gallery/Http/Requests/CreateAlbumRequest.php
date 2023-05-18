@@ -11,6 +11,8 @@ class CreateAlbumRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:191'],
             'description' => ['nullable', 'string'],
+            'photos' => ['nullable', 'array', 'max:4'],
+            'photos.*' => ['nullable', 'mimes:jpeg,jpg,png']
         ];
     }
 
