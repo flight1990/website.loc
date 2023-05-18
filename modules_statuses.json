@@ -6,5 +6,6 @@
     "Promos": true,
     "FAQ": true,
     "Reviews": true,
-    "Gallery": true
+    "Gallery": true,
+    "Settings": true
 }
