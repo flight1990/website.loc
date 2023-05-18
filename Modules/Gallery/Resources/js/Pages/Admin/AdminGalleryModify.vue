@@ -14,6 +14,17 @@
             <small>{{ form.errors.description }}</small>
         </div>
 
+        <div>
+            <label for="photos">Добавить фотографии</label>
+            <input type="file" @input="form.photos = $event.target.files" multiple  accept="image/png, image/jpeg" />
+            <small>{{ form.errors.photos }}</small>
+
+            <progress v-if="form.progress" :value="form.progress.percentage" max="100">
+                {{ form.progress.percentage }}%
+            </progress>
+
+        </div>
+
         <div v-if="album?.photos.length">
             <div v-for="photo in album.photos" :key="photo.id">
 
@@ -64,6 +75,8 @@ export default {
             form: useForm({
                 title: this.album ? this.album.title : '',
                 description: this.album ? this.album.description : '',
+                photos: [],
+                _method: this.album ? 'patch' : 'post',
             })
         }
     },
@@ -73,7 +86,7 @@ export default {
             this.form.post('/admin/gallery');
         },
         update() {
-            this.form.patch(`/admin/gallery/${this.album.id}`);
+            this.form.post(`/admin/gallery/${this.album.id}`);
         },
         submitHandler() {
             this.album ? this.update() : this.create()
