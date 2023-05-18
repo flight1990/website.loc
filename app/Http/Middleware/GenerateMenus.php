@@ -29,8 +29,8 @@ class GenerateMenus
     public function buildGuestMenu(): void
     {
         Menu::make('menu', function ($menu) {
-            $menu->add('Главаня', route('guest.pages.index'));
-            $menu->add('Галлерея', route('guest.gallery.index'))->active('gallery/*');
+            $menu->add('Главная', route('guest.pages.index'));
+            $menu->add('Галерея', route('guest.gallery.index'))->active('gallery/*');
             app(BuildMenusFromDataBaseAction::class)->run($menu);
             $menu->add('Панель управления', route('admin.index'));
         });
