@@ -10,6 +10,7 @@ use Modules\Menu\Database\Seeders\MenuTableSeeder;
 use Modules\Pages\Database\Seeders\PagesTableSeeder;
 use Modules\Promos\Database\Seeders\PromosTableSeeder;
 use Modules\Reviews\Database\Seeders\ReviewTableSeeder;
+use Modules\Settings\Database\Seeders\SettingTableSeeder;
 use Modules\Users\Database\Seeders\UsersTableSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,7 +24,8 @@ class DatabaseSeeder extends Seeder
             ReviewTableSeeder::class,
             PromosTableSeeder::class,
             UsersTableSeeder::class,
-            GalleryDatabaseSeeder::class
+            GalleryDatabaseSeeder::class,
+            SettingTableSeeder::class
         ]);
     }
 }

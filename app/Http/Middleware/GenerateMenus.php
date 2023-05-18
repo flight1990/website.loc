@@ -21,6 +21,7 @@ class GenerateMenus
                 $menu->item('dashboard')->add('Отзывы', route('admin.reviews.index'))->active('admin/reviews/*');
                 $menu->item('dashboard')->add('Галлерея', route('admin.gallery.index'))->active('admin/gallery/*');
                 $menu->item('dashboard')->add('Пользователи', route('admin.users.index'))->active('admin/users/*');
+                $menu->item('dashboard')->add('Настройки', route('admin.settings.index'))->active('admin/settings/*');
                 $menu->add('Вернуться к сайту', route('guest.pages.index'));
             }
         });
