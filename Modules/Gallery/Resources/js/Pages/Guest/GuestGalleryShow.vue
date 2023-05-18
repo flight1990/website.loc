@@ -3,7 +3,7 @@
     <div>{{ album.description }}</div>
 
     <div v-if="album.photos?.length">
-        <img :src="photo.img" alt="" v-for="photo in album.photos" :key="photo.id">
+        <img :src="photo.img" alt="" v-for="photo in album.photos" :key="photo.id" style="width: 350px;">
     </div>
 
     <inertia-link href="/gallery">
@@ -14,6 +14,7 @@
 
 <script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
+import {zoomImages} from "@/helpers";
 
 export default {
     name: "GuestGalleryShow",
@@ -23,6 +24,9 @@ export default {
             type: Object,
             required: true
         }
+    },
+    mounted() {
+        zoomImages();
     }
 }
 </script>

@@ -6,6 +6,7 @@ use App\Traits\FileTrait;
 use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Modules\Gallery\Http\Requests\CreateAlbumRequest;
 use Modules\Gallery\Http\Requests\UpdateAlbumRequest;
@@ -44,6 +45,23 @@ class GalleryController extends Controller
 
     public function store(CreateAlbumRequest $request)
     {
+        DB::transaction(function () use ($request) {
+
+            $album = Album::create($request->validated());
+
+            if (!empty($request->photos)) {
+                foreach ($request->photos as $file) {
+
+                    $photo = $this->upload($file, 'photos');
+
+                    Photo::create([
+                        'img' => $photo['location'],
+                        'album_id' => $album->id
+                    ]);
+                }
+            }
+        });
+
         return redirect()->route('admin.gallery.index');
     }
 
@@ -63,6 +81,25 @@ class GalleryController extends Controller
 
     public function update(UpdateAlbumRequest $request, $id)
     {
+        $album = Album::query()
+            ->findOrFail($id);
+
+        DB::transaction(function () use ($album, $request) {
+            $album->update($request->validated());
+
+            if (!empty($request->photos)) {
+                foreach ($request->photos as $file) {
+
+                    $photo = $this->upload($file, 'photos');
+
+                    Photo::create([
+                        'img' => $photo['location'],
+                        'album_id' => $album->id
+                    ]);
+                }
+            }
+        });
+
         return redirect()->route('admin.gallery.index');
     }
 

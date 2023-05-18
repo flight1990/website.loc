@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <img :src="album.cover" :alt="album.title">
+        <img :src="album.cover" :alt="album.title" style="width: 350px;">
 
         <h3>{{ album.title }}</h3>
         <div>{{ album.description }}</div>
