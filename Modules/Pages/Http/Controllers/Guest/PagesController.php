@@ -34,7 +34,7 @@ class PagesController extends Controller
             ->get();
 
         $albums = Album::query()->select(['id','title', 'description', 'slug',
-            DB::raw('(select img from photos where album_id = albums.id  order by id asc limit 1) as cover')])
+            DB::raw('(select img from photos where album_id = albums.id  order by id desc limit 1) as cover')])
             ->latest()
             ->get();
 
