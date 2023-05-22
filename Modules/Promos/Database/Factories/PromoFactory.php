@@ -16,7 +16,7 @@ class PromoFactory extends Factory
             'title' => ucfirst($this->faker->words(rand(2, 4), true)),
             'content' => $this->faker->realText(400),
             'is_active' => true,
-            'img' => $this->faker->imageUrl,
+            'img' => ['original' => $this->faker->imageUrl, 'thumbnail' => $this->faker->imageUrl],
             'url' => Page::query()->select(['slug'])->inRandomOrder()->value('slug')
         ];
     }

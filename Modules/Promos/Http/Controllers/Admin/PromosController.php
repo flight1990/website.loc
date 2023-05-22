@@ -25,7 +25,7 @@ class PromosController extends Controller
 
             return DataTables::eloquent($query)
                 ->editColumn('img', function ($item) {
-                    return "<img src='{$item->img}'  alt='{$item->title}' width='200'>";
+                    return "<img src='{$item->img['thumbnail']}'  alt='{$item->title}' width='200'>";
                 })
                 ->editColumn('is_active', function ($item) {
                     return $item->is_active ? 'Активна' : 'Не активна';

@@ -36,7 +36,7 @@
                 <div class="absolute inset-0 w-full h-full bg-white/70 flex items-center justify-center" v-if="form.progress">
                     <div class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-primary-600 rounded-full" role="status" aria-label="loading"></div>
                 </div>
-                <img :src="JSON.parse(promo.img).original" alt="" class="w-96">
+                <img :src="promo.img.original" alt="" class="w-96">
             </div>
         </div>
 
