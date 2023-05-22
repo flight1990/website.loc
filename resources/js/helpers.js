@@ -10,7 +10,7 @@ export function replaceHtmlLinksToInertiaLinks(target) {
 
             if (checkIsInternalURL(url)) {
                 e.preventDefault();
-                if (e.target.getAttribute('data-method')) {
+                if (e.currentTarget.getAttribute('data-method')) {
                     router.delete(url, {preserveState: false});
                 } else {
                     router.get(url);
