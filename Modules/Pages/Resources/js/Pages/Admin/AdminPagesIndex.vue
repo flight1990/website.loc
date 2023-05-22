@@ -52,6 +52,7 @@ export default {
                 ],
                 language: {
                     "emptyTable": "Данные отсутствуют",
+                    "infoEmpty": "",
                     "info": "C _START_ по _END_ из _TOTAL_",
                     "lengthMenu": " _MENU_",
                     "search": "Поиск: ",
