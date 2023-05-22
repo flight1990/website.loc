@@ -10,3 +10,5 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import DataTable from 'datatables.net';
 
 window.DataTable = DataTable;
+
+import "viewerjs/dist/viewer.min.css";
