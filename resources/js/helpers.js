@@ -6,7 +6,7 @@ export function replaceHtmlLinksToInertiaLinks(target) {
     Array.from(links).forEach(link => {
         link.addEventListener('click', function (e) {
 
-            const url = e.target.href;
+            const url = e.currentTarget.href;
 
             if (checkIsInternalURL(url)) {
                 e.preventDefault();
@@ -18,7 +18,7 @@ export function replaceHtmlLinksToInertiaLinks(target) {
             } else {
                 return true;
             }
-        })
+        }, true)
     });
 }
 
