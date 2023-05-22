@@ -15,6 +15,10 @@ class Photo extends Model
         'album_id'
     ];
 
+    protected $casts = [
+        'img' => 'json'
+    ];
+
     protected static function newFactory()
     {
         return PhotoFactory::new();
