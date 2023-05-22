@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.soft-button{
+    @apply py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-blue-500 hover:text-white hover:bg-blue-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm
+}
+
+
+/* _____________DATATABLE____________ */
+
+#dataTable{
+    @apply !w-full
+}
+
+.dataTables_filter input {
+    @apply py-2 px-4 !bg-white rounded-md !border-0 ring-1 ring-gray-300 focus:ring-2 focus:ring-primary-500 outline-none mr-1
+}
+
+.dataTables_length select {
+    @apply !py-1.5 !pl-3 !bg-white !pr-10 rounded-md !border-0 ring-1 ring-gray-300 focus:ring-2 focus:ring-primary-500 outline-none ml-1
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    @apply !border-none !rounded-md !px-4 !py-2 !ml-1;
+}
+
+.dataTables_wrapper .dataTables_paginate a.paginate_button.current, .dataTables_wrapper .dataTables_paginate a.paginate_button.current:hover {
+    @apply cursor-default !border-none !bg-none !bg-primary-500 !text-white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    @apply hidden;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    @apply !bg-none hover:!text-black !bg-gray-200;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    @apply !outline-none !shadow-none !bg-none !bg-primary-700 active:!text-white;
+}
+
+/* _____________DATATABLE____________ */
