@@ -1,9 +1,11 @@
 <template>
-    <h1>FAQ</h1>
 
-    <inertia-link  href="/admin/faq/create">
-        Создать новое FAQ
-    </inertia-link>
+    <div class="flex items-center justify-between flex-wrap gap-6 mb-10">
+        <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl">Вопрос-ответ</h1>
+        <inertia-link href="/admin/faq/create" class="solid-button-primary">
+            Создать вопрос-ответ
+        </inertia-link>
+    </div>
 
     <div>
         <table id="table" class="display" style="width: 100%;" v-once>
@@ -41,6 +43,23 @@ export default {
                 {data: 'is_active', name: 'is_active'},
                 {data: 'actions', name: 'actions', orderable: false, searchable: false},
             ],
+            scrollX: true,
+            lengthMenu: [
+                [10, 25, 50, -1],
+                [10, 25, 50, 'Все'],
+            ],
+            language: {
+                "emptyTable": "Данные отсутствуют",
+                "infoEmpty": "",
+                "info": "C _START_ по _END_ из _TOTAL_",
+                "lengthMenu": " _MENU_",
+                "search": "Поиск: ",
+                "zeroRecords": "Совпадающих записей не найдено",
+                'paginate': {
+                    'previous': '❮',
+                    'next': '❯'
+                },
+            },
             fnDrawCallback: function () {
                 replaceHtmlLinksToInertiaLinks('#table');
             }
