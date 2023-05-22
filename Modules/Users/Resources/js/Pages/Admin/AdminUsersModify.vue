@@ -11,7 +11,7 @@
         </inertia-link>
     </div>
 
-    <form>
+    <form class="space-y-6">
         <div>
             <label for="name" class="block text-sm font-medium mb-2">Имя</label>
             <input type="text" id="name" v-model="form.name" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-primary-500 focus:ring-primary-500">
