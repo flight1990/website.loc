@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->string('img')->nullable();
+            $table->json('img')->nullable();
             $table->foreignId('album_id')->nullable()->constrained('albums')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });

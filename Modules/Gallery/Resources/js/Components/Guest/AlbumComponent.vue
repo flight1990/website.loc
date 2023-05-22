@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <img :src="album.cover" :alt="album.title" style="width: 350px;">
+        <img :src="JSON.parse(album.cover).thumbnail" :alt="album.title">
 
         <h3>{{ album.title }}</h3>
         <div>{{ album.description }}</div>

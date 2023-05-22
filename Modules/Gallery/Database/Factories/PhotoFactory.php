@@ -14,7 +14,7 @@ class PhotoFactory extends Factory
     {
         return [
             'album_id' => Album::query()->inRandomOrder()->value('id'),
-            'img' => $this->faker->imageUrl
+            'img' => ['original' => $this->faker->imageUrl, 'thumbnail' => $this->faker->imageUrl]
         ];
     }
 }

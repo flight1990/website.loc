@@ -25,6 +25,7 @@
         "jquery": "^3.6.4",
         "nprogress": "^0.2.0",
         "preline": "^1.8.0",
+        "viewerjs": "^1.11.3",
         "vue": "^3.2.36",
         "vue-draggable-next": "^2.1.1",
         "vue-loader": "^17.0.1",

@@ -31,7 +31,7 @@
         <div v-if="album?.photos.length">
             <div v-for="photo in album.photos" :key="photo.id">
 
-                <img :src="photo.img" alt="" style="width: 200px;">
+                <img :src="photo.img.thumbnail" alt="" style="width: 200px;">
 
                 <inertia-link
                     method="delete"
@@ -94,9 +94,6 @@ export default {
         submitHandler() {
             this.album ? this.update() : this.create()
         }
-    },
-    mounted() {
-        zoomImages();
     }
 }
 </script>
