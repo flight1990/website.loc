@@ -41,7 +41,7 @@
         </div>
 
         <div>
-            <label for="title" class="block text-sm font-medium mb-2">Содержимое</label>
+            <label for="content" class="block text-sm font-medium mb-2">Содержимое</label>
             <SimpleTinyEditor id="content" v-model="form.content" />
             <p class="text-sm text-rose-500 mb-2">{{ form.errors.content }}</p>
         </div>
