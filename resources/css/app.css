@@ -3,10 +3,33 @@
 @tailwind utilities;
 
 
-.soft-button{
-    @apply py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-blue-500 hover:text-white hover:bg-blue-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm
+.solid-button-primary{
+    @apply py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-primary-500 text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800
 }
 
+.soft-button-primary{
+    @apply py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm
+}
+
+.soft-button-gray{
+    @apply py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-gray-100 border border-transparent font-semibold text-gray-500 hover:text-white hover:bg-gray-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-gray-500 focus:ring-offset-2 transition-all text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-600 dark:text-white dark:focus:ring-offset-gray-800
+}
+
+.solid-icon-button-primary-sm{
+    @apply inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-md border border-transparent font-semibold bg-primary-500 text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm  dark:focus:ring-offset-gray-800
+}
+
+.soft-icon-button-primary-sm{
+    @apply py-1.5 px-1.5 inline-flex justify-center items-center gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm
+}
+
+.soft-icon-button-amber-sm{
+    @apply py-1.5 px-1.5 inline-flex justify-center items-center gap-2 rounded-md bg-amber-100 border border-transparent font-semibold text-amber-500 hover:text-white hover:bg-amber-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-amber-500 focus:ring-offset-2 transition-all text-sm
+}
+
+.soft-icon-button-rose-sm{
+    @apply py-1.5 px-1.5 inline-flex justify-center items-center gap-2 rounded-md bg-rose-100 border border-transparent font-semibold text-rose-500 hover:text-white hover:bg-rose-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-rose-500 focus:ring-offset-2 transition-all text-sm
+}
 
 /* _____________DATATABLE____________ */
 

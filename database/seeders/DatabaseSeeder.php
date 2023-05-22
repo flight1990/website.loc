@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             ReviewTableSeeder::class,
             PromosTableSeeder::class,
             UsersTableSeeder::class,
-            GalleryDatabaseSeeder::class,
+//            GalleryDatabaseSeeder::class,
             SettingTableSeeder::class
         ]);
     }

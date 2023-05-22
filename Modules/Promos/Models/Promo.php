@@ -19,6 +19,7 @@ class Promo extends Model
     ];
 
     protected $casts = [
+        'img' => 'json',
         'is_active' => 'boolean',
         'created_at' => 'date:d.m.Y',
         'updated_at' => 'date:d.m.Y',

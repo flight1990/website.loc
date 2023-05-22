@@ -6,11 +6,11 @@ export function replaceHtmlLinksToInertiaLinks(target) {
     Array.from(links).forEach(link => {
         link.addEventListener('click', function (e) {
 
-            const url = e.target.href;
+            const url = e.currentTarget.href;
 
             if (checkIsInternalURL(url)) {
                 e.preventDefault();
-                if (e.target.getAttribute('data-method')) {
+                if (e.currentTarget.getAttribute('data-method')) {
                     router.delete(url, {preserveState: false});
                 } else {
                     router.get(url);
@@ -18,7 +18,7 @@ export function replaceHtmlLinksToInertiaLinks(target) {
             } else {
                 return true;
             }
-        })
+        }, true)
     });
 }
 
