@@ -60,7 +60,7 @@
         <!-- End Sidebar -->
 
         <!-- Content -->
-        <div class="w-full pt-6 px-4 sm:px-6 md:px-8 lg:pl-72">
+        <div class="w-full py-6 px-4 sm:px-6 md:px-8 lg:pl-72">
             <!-- Page Heading -->
             <main>
                 <slot></slot>

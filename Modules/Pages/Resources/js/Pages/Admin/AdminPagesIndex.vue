@@ -1,12 +1,10 @@
 <template>
 
-    <div class="flex items-center justify-between flex-wrap pb-20">
+    <div class="flex items-center justify-between flex-wrap gap-6 mb-10">
         <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl">Страницы</h1>
-        <div class="">
-            <inertia-link href="/admin/pages/create" class="soft-button">
-                Создать новую страницу
-            </inertia-link>
-        </div>
+        <inertia-link href="/admin/pages/create" class="solid-button-primary">
+            Создать новую страницу
+        </inertia-link>
     </div>
 
     <div class="">
