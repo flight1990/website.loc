@@ -1,7 +1,7 @@
 <template>
     <div class="promo">
 
-        <img :src="promo.img" alt="" style="width: 350px;" v-if="promo.img">
+        <img :src="promo.img.thumbnail" alt="" style="width: 350px;" v-if="promo.img">
         <h1>{{ promo.title }}</h1>
         <div v-html="promo.content"></div>
 
