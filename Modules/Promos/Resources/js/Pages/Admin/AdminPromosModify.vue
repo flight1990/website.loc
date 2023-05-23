@@ -19,12 +19,11 @@
             <p class="text-sm text-rose-500 mb-2">{{ form.errors.title }}</p>
         </div>
 
-
         <div class="flex justify-between flex-wrap gap-10">
             <div class="flex-1">
                  <div class="">
                     <label for="file" class="block text-sm font-medium mb-2">Изображение</label>
-                    <input type="file" id="file" accept="image/png, image/jpg, image/jpeg" @input="form.file = $event.target.files[0]" class="w-full bg-white border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:!border-primary-500 focus:ring-primary-500 file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 pr-2">
+                    <input type="file" id="file" accept="image/png, image/jpg, image/jpeg" @input="form.file = $event.target.files[0]" class="w-full bg-white border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:!border-primary-500 focus:ring-primary-500 file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 pr-2 focus:outline-0">
                      <p class="text-sm text-rose-500 mb-2">{{ form.errors.file }}</p>
                 </div>
                 <div class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-primary-600 rounded-full" role="status" aria-label="loading" v-if="form.progress">
@@ -58,7 +57,6 @@
         </div>
 
         <button class="solid-button-primary disabled:bg-gray-500" :disabled="form.processing" @click.prevent="submitHandler">{{ promo ? 'Обновить' : 'Сохранить' }}</button>
-
 
     </form>
 

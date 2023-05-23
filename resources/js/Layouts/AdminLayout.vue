@@ -19,8 +19,8 @@
                 </div>
 
                 <div class="mr-5 lg:mr-0 lg:hidden">
-                    <inertia-link class="flex-none text-xl font-semibold whitespace-nowrap" href="/admin"
-                                  aria-label="Brand">{{ $page.props.app_name }}
+                    <inertia-link class="flex-none text-xl font-semibold whitespace-nowrap" href="/admin" aria-label="Brand">
+                        {{ $page.props.app_name }}
                     </inertia-link>
                 </div>
 
