@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.swiper-pagination-bullet-active{
+    @apply !bg-primary-500
+}
 
 #nprogress .bar {
     @apply !bg-primary-500

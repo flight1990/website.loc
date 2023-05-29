@@ -1,11 +1,8 @@
 <template>
 
     <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
-
             <MenuItemComponent :menu="$page.props.menu.data"/>
     </div>
-
-
 
 <!--    <nav>-->
 <!--        <ul>-->

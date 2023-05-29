@@ -23,7 +23,9 @@
                     </button>
                 </div>
             </div>
+
             <MenuComponent />
+
         </nav>
     </header>
     <!-- ========== END HEADER ========== -->
@@ -36,7 +38,7 @@
     <!-- ========== END MAIN CONTENT ========== -->
 
     <!-- ========== FOOTER ========== -->
-    <footer class="mt-auto py-3 bg-gray-100">
+    <footer class="mt-auto bg-gray-100">
         <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
             <FooterComponent />
         </div>

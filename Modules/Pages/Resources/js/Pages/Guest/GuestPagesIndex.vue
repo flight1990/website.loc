@@ -69,9 +69,9 @@
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
             <div class="grid md:grid-cols-5 gap-10">
                 <div class="md:col-span-2">
-                    <div class="max-w-sm">
+                    <div class="md:max-w-sm">
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Галерея</h2>
-                        <p class="mt-4 hidden md:block text-gray-600 italic">Мы рады поделиться с Вами лучшими моментами проведенными на на нашей усадьбе</p>
+                        <p class="mt-4 text-gray-600 italic">Мы рады поделиться с Вами лучшими моментами проведенными на на нашей усадьбе</p>
                         <div class="mt-8">
                             <inertia-link href="/gallery" class="py-3 px-4 gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm">
                                 Все альбомы
@@ -93,9 +93,9 @@
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
             <div class="grid md:grid-cols-5 gap-10">
                 <div class="md:col-span-2">
-                    <div class="max-w-sm">
+                    <div class="md:max-w-sm">
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Часто задаваемые вопросы</h2>
-                        <p class="mt-4 hidden md:block text-gray-600 italic">Тут мы постараемся ответить на самые часто задаваемые вопросы о нашей усадьбе и что-то напишем еще</p>
+                        <p class="mt-4 text-gray-600 italic">Тут мы постараемся ответить на самые часто задаваемые вопросы о нашей усадьбе и что-то напишем еще</p>
                     </div>
                 </div>
                 <div class="md:col-span-3">
@@ -111,7 +111,7 @@
 
     <div v-if="reviews?.length">
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <div class="grid md:grid-cols-5 gap-10">
+            <div class="md:grid md:grid-cols-5 gap-10">
                 <div class="md:col-span-2">
                     <div class="md:max-w-sm">
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Отзывы</h2>
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="md:col-span-3">
+                <div class="mt-10 md:mt-0 md:col-span-3">
                     <swiper :pagination="{clickable: true}" :modules="modules" :spaceBetween="30" :autoHeight="true" class="mySwiper">
                         <swiper-slide v-for="review in reviews" class="p-8 bg-gray-100 rounded-2xl">
                             <ReviewComponent :key="review.id" :review="review"/>
@@ -136,8 +136,6 @@
     </div>
 
     <ReviewFormComponent/>
-
-
 
 </template>
 
