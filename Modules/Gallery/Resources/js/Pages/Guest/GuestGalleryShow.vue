@@ -1,20 +1,28 @@
 <template>
-    <h1>{{ album.title }}</h1>
-    <div>{{ album.description }}</div>
 
-    <div v-if="album.photos?.length" id="images">
-        <img
-            v-for="(photo, index) in album.photos"
-            :src="photo.img.thumbnail"
-            :alt="`photo ${index + 1}`"
-            :key="photo.id"
-            style="width: 300px;"
-        >
+    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div class="mb-8 max-w-3xl">
+            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight mb-8">{{ album.title }}</h2>
+            <p class="text-gray-600 italic">{{ album.description }}</p>
+        </div>
+        <div class="w-full gap-8 columns-1 sm:columns-2 md:columns-3 lg:columns-4" v-if="album.photos?.length" id="images">
+            <img class="w-full h-auto mb-8 rounded-xl cursor-zoom-in"
+                v-for="(photo, index) in album.photos"
+                :src="photo.img.thumbnail"
+                :alt="`photo ${index + 1}`"
+                :key="photo.id"
+            >
+        </div>
+        <div class="mt-16 flex justify-center">
+            <inertia-link href="/gallery" class="py-3 px-4 gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm">
+                Все альбомы
+            </inertia-link>
+        </div>
     </div>
 
-    <inertia-link href="/gallery">
-        Все альбомы
-    </inertia-link>
+
+
+
 
 </template>
 

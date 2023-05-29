@@ -1,29 +1,10 @@
 <template>
-    <div class="flex m-10">
-        <draggable
-            class="dragArea"
-            tag="ul"
-            :list="menu"
-            animation="100"
-            :group="{name: `group_${level}`, pull: false}"
-            @sort="sort"
-        >
-
+        <draggable class="dragArea" tag="ul" :list="menu" animation="100" :group="{name: `group_${level}`, pull: false}" @sort="sort">
             <li v-for="item in menu" :key="item.id">
-
-                <MenuItem
-                    :menu-item="item"
-                />
-
-                <NestedDraggable
-                    :level="level + 1"
-                    :menu="item.children"
-                    @sort="sort"
-                    :allow-children="false"
-                />
+                <MenuItem :menu-item="item" />
+                <NestedDraggable :level="level + 1" :menu="item.children" @sort="sort" :allow-children="false" class="ml-16" />
             </li>
         </draggable>
-    </div>
 </template>
 <script>
 import {defineComponent} from 'vue';

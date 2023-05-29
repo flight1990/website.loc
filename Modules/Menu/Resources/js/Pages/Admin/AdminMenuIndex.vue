@@ -1,14 +1,13 @@
 <template>
-    <h1>Меню</h1>
 
-    <inertia-link href="/admin/menus/create">
-        Создать пункт меню
-    </inertia-link>
-
-    <NestedDraggable
-        @sort="rebuildTree"
-        :menu="menus"
-    />
+    <div class="flex items-center justify-between flex-wrap gap-6 mb-10">
+        <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl">Меню</h1>
+        <inertia-link href="/admin/menus/create" class="solid-button-primary">
+            Создать пункт меню
+        </inertia-link>
+    </div>
+    <p class="italic text-gray-500 mb-6">Потяните пункт меню для изменения порядка.</p>
+    <NestedDraggable @sort="rebuildTree" :menu="menus" />
 </template>
 
 <script>
