@@ -26,6 +26,9 @@
                             <p class="text-gray-500 italic">
                                 Оставьте свой отзыв. Заполните поля формы и нажмите кнопку отправить.
                             </p>
+                            <div v-if="successMsg">
+                                sdsdssdsdddds
+                            </div>
                         </div>
 
                         <div class="space-y-4">
@@ -100,6 +103,7 @@ export default {
     components: {SimpleTinyEditor},
     data() {
         return {
+            successMsg: false,
             form: useForm({
                 title: this.review ? this.review.title : '',
                 content: this.review ? this.review.content : '',
@@ -109,7 +113,12 @@ export default {
     },
     methods: {
         create() {
-            this.form.post('/reviews', {preserveScroll: true});
+            this.form.post('/reviews', {
+                preserveScroll: true,
+                onSuccess: () => {
+                    this.form.reset(); this.successMsg = true
+                },
+            });
         },
     }
 }

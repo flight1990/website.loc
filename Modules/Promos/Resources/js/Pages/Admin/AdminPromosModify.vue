@@ -41,7 +41,7 @@
 
         <div>
             <label for="content" class="block text-sm font-medium mb-2">Содержимое</label>
-            <SimpleTinyEditor id="content" v-model="form.content" />
+            <textarea  id="content" cols="30" rows="10" v-model="form.content"></textarea>
             <p class="text-sm text-rose-500 mb-2">{{ form.errors.content }}</p>
         </div>
 
@@ -65,15 +65,10 @@
 <script>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import {useForm} from "@inertiajs/vue3";
-import SimpleTinyEditor from "@/Share/Admin/SimpleTinyEditor.vue";
-import {zoomImages} from "@/helpers";
 
 export default {
     name: "AdminPromosModify",
     layout: AdminLayout,
-    components: {
-        SimpleTinyEditor
-    },
     props: {
         promo: Object
     },
@@ -100,8 +95,5 @@ export default {
             this.promo ? this.update() : this.create()
         }
     },
-    mounted() {
-        zoomImages();
-    }
 }
 </script>

@@ -25,7 +25,6 @@ export default {
     mounted() {
         replaceHtmlLinksToInertiaLinks('#content');
         wrapTables('#content');
-        zoomImages();
     }
 }
 </script>

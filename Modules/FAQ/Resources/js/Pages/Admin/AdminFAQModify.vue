@@ -20,8 +20,9 @@
         </div>
 
         <div>
-            <label for="title" class="block text-sm font-medium mb-2">Ответ</label>
-            <simple-tiny-editor id="answer" v-model="form.answer" />
+            <label for="answer" class="block text-sm font-medium mb-2">Ответ</label>
+            <textarea id="answer" v-model="form.answer"></textarea>
+
             <p class="text-sm text-rose-500 mb-2">{{ form.errors.answer }}</p>
         </div>
 
@@ -39,11 +40,9 @@
 <script>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import {useForm} from "@inertiajs/vue3";
-import SimpleTinyEditor from "@/Share/Admin/SimpleTinyEditor.vue";
 
 export default {
     name: "AdminFAQModify",
-    components: {SimpleTinyEditor},
     layout: AdminLayout,
     props: {
         faq: {

@@ -10,8 +10,8 @@
                 </div>
                 <div class="flex flex-col gap-3">
                     <h3 class="text-xl font-semibold text-left text-gray-800">Контакты:</h3>
-                    <a class="italic text-gray-500" href="tel:{{ $page.props.site_settings.phone }}">{{ $page.props.site_settings.phone }}</a>
-                    <a class="italic text-gray-500" href="mailto:{{ $page.props.site_settings.email }}">{{ $page.props.site_settings.email }}</a>
+                    <a class="italic text-gray-500" :href="`tel:${$page.props.site_settings.phone}`">{{ $page.props.site_settings.phone }}</a>
+                    <a class="italic text-gray-500" :href="`mailto:${$page.props.site_settings.email}`">{{ $page.props.site_settings.email }}</a>
                 </div>
             </div>
         </div>
