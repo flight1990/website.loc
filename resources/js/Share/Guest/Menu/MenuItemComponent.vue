@@ -26,23 +26,18 @@
 
             <template v-if="item.url !== '' && !item.children.length">
 
-
-                {{ item.url !== '' }}
-
                 <inertia-link class="font-medium text-gray-600 hover:text-gray-400" :href="item.url" v-if="checkIsInternalURL(item.url)" :class="{'text-primary-500 hover:text-primary-500' : item.is_active}">
                     {{ item.title }}
                 </inertia-link>
 
                 <a :href="item.url" target="_blank" v-else>
-                    dsdsdsdsdsdsds
                     {{ item.title }}
                 </a>
             </template>
 
-            <template v-else>
-                xxxxxxxxxxxxxxxx
-                <span class="italic text-primary-500">{{ item.title }}</span>
-            </template>
+<!--            <template v-else>-->
+<!--                <span class="italic text-primary-500">{{ item.title }}</span>-->
+<!--            </template>-->
 
 
 

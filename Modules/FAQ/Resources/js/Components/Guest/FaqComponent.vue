@@ -10,7 +10,7 @@
             </svg>
         </button>
         <div id="collapse-{{ faq.id }}" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="heading-{{ faq.id }}">
-            <div v-html="faq.answer"></div>
+            <p class="text-gray-500 italic">{{ faq.answer }}</p>
         </div>
     </div>
 </template>

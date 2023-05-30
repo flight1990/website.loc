@@ -2,7 +2,7 @@
     <inertia-link class="group relative flex flex-col w-full min-h-[15rem] bg-center bg-cover rounded-xl hover:shadow-lg transition " :href="`/gallery/${album.slug}`">
         <div class="absolute inset-0 w-full h-full">
             <img class="w-full h-full object-cover rounded-xl" :src="JSON.parse(album.cover).thumbnail" :alt="album.title">
-            <div class="w-full h-full -translate-y-full bg-black/10 rounded-xl"></div>
+            <div class="w-full h-full -translate-y-full bg-black/20 rounded-xl"></div>
         </div>
         <div class="relative flex-auto p-4 md:p-6">
             <h3 class="text-xl text-white/[.9] group-hover:text-white">{{ album.title }}</h3>

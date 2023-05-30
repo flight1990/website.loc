@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    @apply scroll-smooth
+}
+
 .swiper-pagination-bullet-active{
     @apply !bg-primary-500
 }

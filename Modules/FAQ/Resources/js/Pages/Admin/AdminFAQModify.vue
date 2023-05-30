@@ -21,8 +21,7 @@
 
         <div>
             <label for="answer" class="block text-sm font-medium mb-2">Ответ</label>
-            <textarea id="answer" v-model="form.answer"></textarea>
-
+            <textarea id="answer" v-model="form.answer" rows="5" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-primary-500 focus:ring-primary-500"></textarea>
             <p class="text-sm text-rose-500 mb-2">{{ form.errors.answer }}</p>
         </div>
 
