@@ -13,7 +13,7 @@ class UploadController extends Controller
     public function uploadImage(Request $request): JsonResponse
     {
         $response = $this->upload($request->file('file'), 'images');
-        return response()->json(['location'=> $response['location']]);
+        return response()->json(['location'=> $response['location']['thumbnail']]);
     }
 
     public function uploadFile(Request $request): JsonResponse
