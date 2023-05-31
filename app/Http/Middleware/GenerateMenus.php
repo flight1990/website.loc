@@ -31,9 +31,10 @@ class GenerateMenus
     {
         Menu::make('menu', function ($menu) {
             $menu->add('Главная', route('guest.pages.index'));
-            $menu->add('Галерея', route('guest.gallery.index'))->active('gallery/*');
             app(BuildMenusFromDataBaseAction::class)->run($menu);
-            $menu->add('Панель управления', route('admin.index'));
+            $menu->add('Галерея', route('guest.gallery.index'))->active('gallery/*');
+            $menu->add('Контакты', route('guest.pages.index', '#contact'));
+//            $menu->add('Панель управления', route('admin.index'));
         });
     }
 

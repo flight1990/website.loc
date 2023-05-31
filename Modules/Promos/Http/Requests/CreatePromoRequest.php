@@ -11,7 +11,7 @@ class CreatePromoRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:191'],
             'url' => ['nullable', 'string', 'max:191'],
-            'file' => ['nullable', 'image', 'mimes:jpg'],
+            'file' => ['required', 'image', 'mimes:jpg'],
             'content' => ['nullable', 'string'],
             'is_active' => ['nullable', 'boolean']
         ];
@@ -20,5 +20,15 @@ class CreatePromoRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    public function attributes() {
+        return [
+            'title' => '"Название"',
+            'url' => '"Ссылка"',
+            'file' => '"Изображение"',
+            'content' => '"Содержимое"',
+            'is_active' => '"Статус"',
+        ];
     }
 }

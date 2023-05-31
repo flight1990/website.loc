@@ -7,7 +7,7 @@
                 <div class="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
 
                     <div class="flex flex-col items-center gap-10">
-                        <img class="w-full" src="/public/sun_dolina.svg" alt="">
+                        <img class="w-full" src="/public/sun_dolina.svg" :alt="$page.props.app_name">
                         <p class="text-center italic text-gray-600">
                             <span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>
                             Наша агроусадьба находится на берегу живописного и
@@ -30,7 +30,7 @@
 
                 <div class="lg:col-span-6">
                     <div class="relative">
-                        <img class="shadow-xl shadow-gray-200 rounded-xl w-full aspect-square object-cover" src="/public/main.jpg" alt="Image Description">
+                        <img class="shadow-xl shadow-gray-200 rounded-xl w-full aspect-square object-cover" src="/public/main.jpg" :alt="$page.props.app_name">
 
                         <!-- SVG Element -->
                         <div class="hidden absolute top-0 right-0 translate-x-20 -translate-y-10 md:block">

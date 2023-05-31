@@ -30,4 +30,13 @@ class UpdateUserRequest extends FormRequest
     {
         return true;
     }
+
+    public function attributes() {
+        return [
+            'name' => '"Имя"',
+            'email' => '"Эл. почта"',
+            'password' => '"Пароль"',
+            'roles' => '"Роль"',
+        ];
+    }
 }

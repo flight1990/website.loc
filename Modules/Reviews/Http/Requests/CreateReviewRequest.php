@@ -20,4 +20,13 @@ class CreateReviewRequest extends FormRequest
     {
         return true;
     }
+
+    public function attributes() {
+        return [
+            'title' => '"Заголовок"',
+            'content' => '"Отзыв"',
+            'is_active' => '"Статус"',
+            'client' => '"Имя"',
+        ];
+    }
 }

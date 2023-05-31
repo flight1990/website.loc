@@ -21,4 +21,14 @@ class UpdatePromoRequest extends FormRequest
     {
         return true;
     }
+
+    public function attributes() {
+        return [
+            'title' => '"Название"',
+            'url' => '"Ссылка"',
+            'file' => '"Изображение"',
+            'content' => '"Содержимое"',
+            'is_active' => '"Статус"',
+        ];
+    }
 }

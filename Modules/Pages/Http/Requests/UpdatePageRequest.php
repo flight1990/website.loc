@@ -15,7 +15,7 @@ class UpdatePageRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:191'],
-            'content' => ['nullable', 'string'],
+            'content' => ['required', 'string'],
             'is_active' => ['nullable', 'boolean'],
             'meta_keywords' => ['nullable', 'string', 'max:191'],
             'meta_description' => ['nullable', 'string', 'max:191'],
@@ -31,4 +31,15 @@ class UpdatePageRequest extends FormRequest
     {
         return true;
     }
+
+    public function attributes() {
+        return [
+            'title' => '"Название"',
+            'content' => '"Содержимое"',
+            'is_active' => '"Статус"',
+            'meta_keywords' => '"SEO слова"',
+            'meta_description' => '"SEO описание"',
+        ];
+    }
+
 }
