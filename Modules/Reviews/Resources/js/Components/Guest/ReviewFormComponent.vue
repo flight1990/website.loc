@@ -23,9 +23,15 @@
                             <h3 class="mb-2 text-xl font-bold text-gray-800">
                                 Оставить отзыв
                             </h3>
-                            <p class="text-gray-500 italic">
-                                Оставьте свой отзыв. Заполните поля формы и нажмите кнопку отправить.
-                            </p>
+                            <div>
+                                <p class="text-green-700 italic font-medium" v-if="successMsg">
+                                    Ваш отзыв успешно отправлен! Вы может написать еще отзыв или закрыть это окно.
+                                </p>
+                                <p class="text-gray-500 italic" v-else>
+                                    <span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>Оставьте свой отзыв. Заполните поля формы и нажмите кнопку отправить.
+                                </p>
+                            </div>
+
                         </div>
 
                         <div class="space-y-4">
@@ -100,6 +106,7 @@ export default {
     components: {SimpleTinyEditor},
     data() {
         return {
+            successMsg: false,
             form: useForm({
                 title: this.review ? this.review.title : '',
                 content: this.review ? this.review.content : '',
@@ -109,7 +116,12 @@ export default {
     },
     methods: {
         create() {
-            this.form.post('/reviews', {preserveScroll: true});
+            this.form.post('/reviews', {
+                preserveScroll: true,
+                onSuccess: () => {
+                    this.form.reset(); this.successMsg = true
+                },
+            });
         },
     }
 }

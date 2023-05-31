@@ -18,11 +18,11 @@
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">
                             {{ promo.title }}
                         </h2>
-                        <div v-html="promo.content"></div>
+                        <p class="text-gray-600 italic">{{ promo.content }}</p>
                         <div class="mt-4">
-                            <a v-if="promo.url" :href="promo.url" class="py-3 px-4 gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm">
+                            <inertia-link v-if="promo.url" :href="promo.url" class="py-3 px-4 gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm">
                                 Подробнее
-                            </a>
+                            </inertia-link>
                         </div>
 
                     </div>

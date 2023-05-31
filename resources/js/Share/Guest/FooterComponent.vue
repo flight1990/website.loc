@@ -3,15 +3,15 @@
     <div class="md:grid md:grid-cols-2 gap-10 py-10">
         <div class="col-span-1">
             <div class="flex flex-col gap-4">
-                <img class="max-h-32 w-full" src="sun_dolina.svg" alt="">
+                <img class="max-h-32 w-full" src="/public/sun_dolina.svg" alt="">
                 <div class="flex flex-col gap-3">
                     <h3 class="text-xl font-semibold text-left text-gray-800">Адрес:</h3>
                     <p class="italic text-gray-500 md:max-w-sm">{{ $page.props.site_settings.address }}</p>
                 </div>
                 <div class="flex flex-col gap-3">
                     <h3 class="text-xl font-semibold text-left text-gray-800">Контакты:</h3>
-                    <a class="italic text-gray-500" href="tel:{{ $page.props.site_settings.phone }}">{{ $page.props.site_settings.phone }}</a>
-                    <a class="italic text-gray-500" href="mailto:{{ $page.props.site_settings.email }}">{{ $page.props.site_settings.email }}</a>
+                    <a class="italic text-gray-500" :href="`tel:${$page.props.site_settings.phone}`">{{ $page.props.site_settings.phone }}</a>
+                    <a class="italic text-gray-500" :href="`mailto:${$page.props.site_settings.email}`">{{ $page.props.site_settings.email }}</a>
                 </div>
             </div>
         </div>

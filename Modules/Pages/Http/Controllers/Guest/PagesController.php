@@ -36,6 +36,7 @@ class PagesController extends Controller
         $albums = Album::query()->select(['id','title', 'description', 'slug',
             DB::raw('(select img from photos where album_id = albums.id  order by id desc limit 1) as cover')])
             ->latest()
+            ->limit(4)
             ->get();
 
         return Inertia::render('Pages::Guest/GuestPagesIndex', [

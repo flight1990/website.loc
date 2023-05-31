@@ -20,7 +20,7 @@
 
         <div>
             <label for="content" class="block text-sm font-medium mb-2">Отзыв</label>
-            <TinyEditor id="content" v-model="form.content" />
+            <textarea id="content" v-model="form.content" rows="5" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-primary-500 focus:ring-primary-500"></textarea>
             <p class="text-sm text-rose-500 mb-2">{{ form.errors.content }}</p>
         </div>
 
@@ -43,10 +43,8 @@
 <script>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import {useForm} from "@inertiajs/vue3";
-import TinyEditor from "@/Share/Admin/TinyEditor.vue";
 export default {
     name: "AdminReviewsModify",
-    components: {TinyEditor},
     layout: AdminLayout,
     props: {
         review: {

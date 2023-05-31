@@ -14,15 +14,15 @@ class GenerateMenus
         Menu::make('menu', function ($menu) {
             if (auth()->check()) {
                 $menu->add('Панель управления', route('admin.index'))->nickname('dashboard');
-                $menu->item('dashboard')->add('Cтраницы', route('admin.pages.index'))->active('admin/pages/*')->nickname('pages');
-                $menu->item('dashboard')->add('Промо', route('admin.promos.index'))->active('admin/promos/*');
-                $menu->item('dashboard')->add('FAQ', route('admin.faq.index'))->active('admin/faq/*');
-                $menu->item('dashboard')->add('Отзывы', route('admin.reviews.index'))->active('admin/reviews/*');
-                $menu->item('dashboard')->add('Галлерея', route('admin.gallery.index'))->active('admin/gallery/*');
-                $menu->item('dashboard')->add('Меню', route('admin.menus.index'))->active('admin/menus/*');
-                $menu->item('dashboard')->add('Пользователи', route('admin.users.index'))->active('admin/users/*');
-                $menu->item('dashboard')->add('Настройки', route('admin.settings.index'))->active('admin/settings/*');
-                $menu->add('Вернуться к сайту', route('guest.pages.index'));
+                $menu->add('Cтраницы', route('admin.pages.index'))->active('admin/pages/*')->nickname('pages');
+                $menu->add('Промо', route('admin.promos.index'))->active('admin/promos/*');
+                $menu->add('Вопрос-ответ', route('admin.faq.index'))->active('admin/faq/*');
+                $menu->add('Отзывы', route('admin.reviews.index'))->active('admin/reviews/*');
+                $menu->add('Галерея', route('admin.gallery.index'))->active('admin/gallery/*');
+                $menu->add('Меню', route('admin.menus.index'))->active('admin/menus/*');
+                $menu->add('Пользователи', route('admin.users.index'))->active('admin/users/*');
+                $menu->add('Настройки', route('admin.settings.index'))->active('admin/settings/*');
+//                $menu->add('Вернуться к сайту', route('guest.pages.index'));
             }
         });
     }

@@ -7,20 +7,22 @@
                 <div class="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
 
                     <div class="flex flex-col items-center gap-10">
-                        <img class="w-full" src="sun_dolina.svg" alt="">
-                        <p class="text-center italic text-gray-600">Наша агроусадьба находится на берегу живописного и
+                        <img class="w-full" src="/public/sun_dolina.svg" alt="">
+                        <p class="text-center italic text-gray-600">
+                            <span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>
+                            Наша агроусадьба находится на берегу живописного и
                             так далее ipsum dolor sit amet, consectetur adipisicing elit. Delectus fugiat, possimus.
                             Aliquid, consequatur deleniti eligendi est facere illo incidunt labore laudantium maxime
                             non, officiis omnis perferendis ullam! Blanditiis veniam, voluptate?</p>
                         <div class="flex items-center justify-center gap-2">
-                            <button type="button"
+                            <a :href="`tel:${$page.props.site_settings.phone}`"
                                     class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-primary-500 text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm">
                                 Забронировать
-                            </button>
-                            <button type="button"
+                            </a>
+                            <a href="#contact"
                                     class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm">
                                 Контакты
-                            </button>
+                            </a>
                         </div>
                     </div>
 
@@ -28,8 +30,7 @@
 
                 <div class="lg:col-span-6">
                     <div class="relative">
-                        <img class="shadow-xl shadow-gray-200 rounded-xl w-full aspect-square object-cover"
-                             src="main.jpg" alt="Image Description">
+                        <img class="shadow-xl shadow-gray-200 rounded-xl w-full aspect-square object-cover" src="/public/main.jpg" alt="Image Description">
 
                         <!-- SVG Element -->
                         <div class="hidden absolute top-0 right-0 translate-x-20 -translate-y-10 md:block">
@@ -71,7 +72,7 @@
                 <div class="md:col-span-2">
                     <div class="md:max-w-sm">
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Галерея</h2>
-                        <p class="mt-4 text-gray-600 italic">Мы рады поделиться с Вами лучшими моментами проведенными на на нашей усадьбе</p>
+                        <p class="mt-4 text-gray-600 italic"><span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>Мы рады поделиться с Вами лучшими моментами проведенными на на нашей усадьбе</p>
                         <div class="mt-8">
                             <inertia-link href="/gallery" class="py-3 px-4 gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm">
                                 Все альбомы
@@ -95,7 +96,7 @@
                 <div class="md:col-span-2">
                     <div class="md:max-w-sm">
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Часто задаваемые вопросы</h2>
-                        <p class="mt-4 text-gray-600 italic">Тут мы постараемся ответить на самые часто задаваемые вопросы о нашей усадьбе и что-то напишем еще</p>
+                        <p class="mt-4 text-gray-600 italic"><span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>Тут мы постараемся ответить на самые часто задаваемые вопросы о нашей усадьбе и что-то напишем еще</p>
                     </div>
                 </div>
                 <div class="md:col-span-3">
@@ -115,7 +116,7 @@
                 <div class="md:col-span-2">
                     <div class="md:max-w-sm">
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Отзывы</h2>
-                        <p class="mt-4 text-gray-600 italic">Мы собрали ваши мнения о нашей усадьбе ведь нам очень важно что вы думаете. Поделитесь мнением или впечатлениями о нашей усадбе.</p>
+                        <p class="mt-4 text-gray-600 italic"><span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>Мы собрали ваши мнения о нашей усадьбе ведь нам очень важно что вы думаете. Поделитесь мнением или впечатлениями о нашей усадбе.</p>
                         <div class="mt-8">
                             <button type="button" class="py-3 px-4 gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm" data-hs-overlay="#review-modal">
                                 Оставить отзыв

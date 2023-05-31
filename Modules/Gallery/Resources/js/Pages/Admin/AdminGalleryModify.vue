@@ -46,9 +46,9 @@
 
 <!--        </div>-->
 
-        <div v-if="album?.photos.length" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+        <div v-if="album?.photos.length" class="gap-8 columns-1 sm:columns-2 md:columns-3 lg:columns-4">
             <div v-for="photo in album.photos" :key="photo.id" class="relative">
-                <img :src="photo.img.thumbnail" alt="">
+                <img :src="photo.img.thumbnail" class="w-full h-auto mb-8 rounded-xl" alt="">
                 <div class="absolute inset-0 flex justify-end transition">
                     <inertia-link
                         method="delete"
