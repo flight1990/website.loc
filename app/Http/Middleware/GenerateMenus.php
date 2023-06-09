@@ -33,7 +33,8 @@ class GenerateMenus
             $menu->add('Главная', route('guest.pages.index'));
             app(BuildMenusFromDataBaseAction::class)->run($menu);
             $menu->add('Галерея', route('guest.gallery.index'))->active('gallery/*');
-            $menu->add('Контакты', route('guest.pages.index', '#contact'));
+
+            $menu->add('Контакты', route('guest.pages.index').'#contact');
 //            $menu->add('Панель управления', route('admin.index'));
         });
     }

@@ -24,7 +24,9 @@
                             {{ item.title }}
                         </inertia-link>
 
-                        <a :href="item.url" target="_blank" v-else
+
+
+                        <a :href="item.url" :target="item.url.includes('#') ? '_self' : '_blank'" v-else
                            class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-primary-500">
                             {{ item.title }}
                         </a>
@@ -41,7 +43,7 @@
                     {{ item.title }}
                 </inertia-link>
 
-                <a :href="item.url" target="_blank" v-else class="font-medium text-gray-600 hover:text-gray-400">
+                <a :href="item.url" :target="item.url.includes('#') ? '_self' : '_blank'" v-else class="font-medium text-gray-600 hover:text-gray-400">
                     {{ item.title }}
                 </a>
             </template>
