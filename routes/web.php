@@ -13,6 +13,12 @@ use App\Http\Controllers\UploadController as AdminUploadController;
 |
 */
 
+Route::get('command', function () {
+    \Artisan::call('storage:link');
+    dd("Done");
+});
+
+
 Route::prefix('admin')->name('admin')->middleware('auth')->group(function () {
     Route::controller(AdminUploadController::class)->prefix('upload')->name('upload.')->group(function () {
         Route::post('/image', 'uploadImage');
