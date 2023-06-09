@@ -19,4 +19,12 @@ class CreateFAQRequest extends FormRequest
     {
         return true;
     }
+
+    public function attributes() {
+        return [
+            'question' => '"Вопрос"',
+            'answer' => '"Ответ"',
+            'is_active' => '"Статус"',
+        ];
+    }
 }

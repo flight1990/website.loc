@@ -22,7 +22,6 @@ class GenerateMenus
                 $menu->add('Меню', route('admin.menus.index'))->active('admin/menus/*');
                 $menu->add('Пользователи', route('admin.users.index'))->active('admin/users/*');
                 $menu->add('Настройки', route('admin.settings.index'))->active('admin/settings/*');
-//                $menu->add('Вернуться к сайту', route('guest.pages.index'));
             }
         });
     }
@@ -31,9 +30,9 @@ class GenerateMenus
     {
         Menu::make('menu', function ($menu) {
             $menu->add('Главная', route('guest.pages.index'));
-            $menu->add('Галерея', route('guest.gallery.index'))->active('gallery/*');
             app(BuildMenusFromDataBaseAction::class)->run($menu);
-            $menu->add('Панель управления', route('admin.index'));
+            $menu->add('Галерея', route('guest.gallery.index'))->active('gallery/*');
+            $menu->add('Контакты', route('guest.pages.index').'#contact');
         });
     }
 

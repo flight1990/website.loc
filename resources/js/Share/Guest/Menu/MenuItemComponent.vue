@@ -1,8 +1,8 @@
 <template>
-    <ul class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
+    <ul class="flex flex-col gap-5 mt-5 lg:flex-row lg:items-center lg:justify-end lg:mt-0 lg:pl-5">
         <li v-for="item in menu">
 
-            <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none]"
+            <div class="hs-dropdown [--strategy:static] lg:[--strategy:fixed] [--adaptive:none]"
                  v-if="item.children.length">
                 <button id="hs-mega-menu-basic-dr" type="button"
                         class="flex items-center w-full text-gray-600 hover:text-gray-400 group font-medium">
@@ -15,7 +15,7 @@
                 </button>
 
                 <div
-                    class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 sm:w-48 z-10 bg-white sm:shadow-md rounded-lg p-2 before:absolute top-full border before:-top-5 before:left-0 before:w-full before:h-5 hidden">
+                    class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] lg:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 lg:w-48 z-10 bg-white lg:shadow-md rounded-lg p-2 before:absolute top-full border before:-top-5 before:left-0 before:w-full before:h-5 hidden">
 
                     <template v-for="item in item.children">
                         <inertia-link v-if="checkIsInternalURL(item.url)"
@@ -24,7 +24,9 @@
                             {{ item.title }}
                         </inertia-link>
 
-                        <a :href="item.url" target="_blank" v-else
+
+
+                        <a :href="item.url" :target="item.url.includes('#') ? '_self' : '_blank'" v-else
                            class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-primary-500">
                             {{ item.title }}
                         </a>
@@ -41,7 +43,7 @@
                     {{ item.title }}
                 </inertia-link>
 
-                <a :href="item.url" target="_blank" v-else>
+                <a :href="item.url" :target="item.url.includes('#') ? '_self' : '_blank'" v-else class="font-medium text-gray-600 hover:text-gray-400">
                     {{ item.title }}
                 </a>
             </template>

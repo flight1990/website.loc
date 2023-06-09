@@ -21,7 +21,7 @@
                     <option :value="parent.id" v-for="parent in parents">{{ parent.title }}</option>
                 </template>
             </select>
-            <p class="text-sm text-rose-500 mb-2">{{ form.errors.title }}</p>
+            <p class="text-sm text-rose-500 mb-2">{{ form.errors.parent_id }}</p>
         </div>
 
         <div>

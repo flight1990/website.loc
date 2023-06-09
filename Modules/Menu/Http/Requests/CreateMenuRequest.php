@@ -21,4 +21,13 @@ class CreateMenuRequest extends FormRequest
     {
         return true;
     }
+
+    public function attributes() {
+        return [
+            'title' => '"Название"',
+            'url' => '"Ссылка"',
+            'is_active' => '"Статус"',
+            'parent_id' => '"Родитель"',
+        ];
+    }
 }

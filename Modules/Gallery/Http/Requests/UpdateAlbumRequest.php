@@ -19,4 +19,13 @@ class UpdateAlbumRequest extends FormRequest
     {
         return true;
     }
+
+    public function attributes() {
+        return [
+            'title' => '"Название"',
+            'description' => '"Описание"',
+            'photos' => '"Фотографии"',
+            'photos.*' => '"Фотография"',
+        ];
+    }
 }

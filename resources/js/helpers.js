@@ -24,7 +24,7 @@ export function replaceHtmlLinksToInertiaLinks(target) {
 
 export function checkIsInternalURL(url)
 {
-    return url === null ? false : (url.includes(import.meta.env.VITE_APP_URL) && !url.includes('storage'));
+    return url === null ? false : (url.includes(import.meta.env.VITE_APP_URL) && !url.includes('storage') );
 }
 
 export function zoomImages()
