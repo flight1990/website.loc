@@ -9,11 +9,8 @@
                     <div class="flex flex-col items-center gap-6">
                         <img class="w-full" src="/public/sun_dolina.svg" :alt="$page.props.app_name">
                         <p class="text-center italic text-gray-600">
-                            <span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>
-                            Наша агроусадьба находится на берегу живописного и
-                            так далее ipsum dolor sit amet, consectetur adipisicing elit. Delectus fugiat, possimus.
-                            Aliquid, consequatur deleniti eligendi est facere illo incidunt labore laudantium maxime
-                            non, officiis omnis perferendis ullam! Blanditiis veniam, voluptate?</p>
+                            {{ $page.props.site_settings.main_desc }}
+                        </p>
                         <div class="flex items-center justify-center gap-2">
                             <a :href="`tel:${$page.props.site_settings.phone}`"
                                     class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-primary-500 text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm">
@@ -107,7 +104,9 @@
                 <div class="md:col-span-2">
                     <div class="md:max-w-sm">
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Галерея</h2>
-                        <p class="mt-4 text-gray-600 italic"><span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>Мы рады поделиться с Вами лучшими моментами проведенными на на нашей усадьбе</p>
+                        <p class="mt-4 text-gray-600 italic">
+                            {{ $page.props.site_settings.gallery_desc }}
+                        </p>
                         <div class="mt-8">
                             <inertia-link href="/gallery" class="py-3 px-4 gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm">
                                 Все альбомы
@@ -131,7 +130,9 @@
                 <div class="md:col-span-2">
                     <div class="md:max-w-sm">
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Часто задаваемые вопросы</h2>
-                        <p class="mt-4 text-gray-600 italic"><span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>Тут мы постараемся ответить на самые часто задаваемые вопросы о нашей усадьбе и что-то напишем еще</p>
+                        <p class="mt-4 text-gray-600 italic">
+                            {{ $page.props.site_settings.faq_desc }}
+                        </p>
                     </div>
                 </div>
                 <div class="md:col-span-3">
@@ -151,7 +152,9 @@
                 <div class="md:col-span-2">
                     <div class="md:max-w-sm">
                         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Отзывы</h2>
-                        <p class="mt-4 text-gray-600 italic"><span class="font-bold">ТУТ НАПИСАТЬ ТЕКСТ </span>Мы собрали ваши мнения о нашей усадьбе ведь нам очень важно что вы думаете. Поделитесь мнением или впечатлениями о нашей усадбе.</p>
+                        <p class="mt-4 text-gray-600 italic">
+                            {{ $page.props.site_settings.reviews_desc }}
+                        </p>
                         <div class="mt-8">
                             <button type="button" class="py-3 px-4 gap-2 rounded-md bg-primary-100 border border-transparent font-semibold text-primary-500 hover:text-white hover:bg-primary-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm" data-hs-overlay="#review-modal">
                                 Оставить отзыв

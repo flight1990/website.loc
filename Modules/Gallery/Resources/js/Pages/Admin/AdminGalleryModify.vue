@@ -28,7 +28,7 @@
         <div class="">
             <label for="photos" class="block text-sm font-medium mb-2">Добавить фотографии</label>
             <input type="file" @input="form.photos = $event.target.files" multiple  accept="image/png, image/jpeg, image/jpg" class="w-full bg-white border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:!border-primary-500 focus:ring-primary-500 file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 pr-2 focus:outline-0" />
-            <p class="text-sm text-gray-500 mb-2">Максимум 4 файла</p>
+            <p class="text-sm text-gray-500 mb-2">Максимум 10 файлов в формате .jpeg .jpg .png за один раз.</p>
             <p class="text-sm text-rose-500 mb-2">{{ form.errors.photos }}</p>
         </div>
 
