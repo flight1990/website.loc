@@ -7,7 +7,7 @@
 
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight mb-4">{{ page.title }}</h2>
-        <div v-html="page.content" id="content"></div>
+        <div v-html="page.content" id="content" class="prose"></div>
     </div>
 </template>
 
